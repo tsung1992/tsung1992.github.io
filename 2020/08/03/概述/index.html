@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="生命也许会孤独一阵子，但不会孤独一辈子"><title> | 小虫子O o o</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">小虫子O o o</h1><a id="logo" href="/.">小虫子O o o</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title"></h1><div class="post-meta"><a href="/2020/08/03/概述/#comments" class="comment-count"></a><p><span class="date">Aug 03, 2020</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h2 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h2><ul>
+<li><p>ISO标准(ISO组织制定)</p>
+<p>​    开放系统互连(open system interconnection)，将不同系统进行互连所构建的模型</p>
+<p>​    参考模型：不是实际的协议，并不是在实际过程汇总进行实用的模型，而是作为参考、知道的模型</p>
+</li>
+<li><p>目的</p>
+<p>​    使两个不同的系统能够通信，而不需要改变底层的硬件或软件逻辑</p>
+<p>​    不同的系统：一台计算机、一部电话</p>
+</li>
+</ul>
+<p><strong>OSI不是协议，是网络体系结构的概念模型</strong></p>
+<h2 id="层次体系结构"><a href="#层次体系结构" class="headerlink" title="层次体系结构"></a>层次体系结构</h2><p>网络支持层：为通信提供传输的支持</p>
+<p>应用支持层：通常由软件实现的，应用软件，为网络应用提供相应的支持</p>
+<p>传输层：将上下两层结合在一起</p>
+<p><img src="https://pic1.zhimg.com/80/v2-d15cc181093cdfaaafde8d7e712ede45_720w.png" alt="img"></p>
+<h2 id="对等层通信"><a href="#对等层通信" class="headerlink" title="对等层通信"></a>对等层通信</h2><p>层次模型在通信过程中是如何使用的。</p>
+<p>A 和 B 通过中间节点进行通信(网络互连设备)</p>
+<p>两个系统之间如何实现通信，其通信方式称为对等层通信。</p>
+<p>对等层概念可通过层次模型进行对应。</p>
+<p>下层：服务提供者</p>
+<p>上层：服务使用者</p>
+<p>接口：层与层之间存在一个接口，为了实现层与层之间服务的提供与使用的通道</p>
+<p>对等层：不同主机之间的相同层次被称为对等层(Peer)。主机A的应用层和主机B的应用层互为对等层、主机A的会话层和主机B的会话层互为对等层</p>
+<p>对等进程/对等实体</p>
+<p>对等层协议：对等实体之间交换数据或通信时必须遵守的规则</p>
+<p>对等层与对等实体：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 每一层可以同时存在多个实体</span></span><br><span class="line">	存在通信关系的对等层实体才是对等实体</span><br><span class="line"><span class="meta">#</span><span class="bash"> 每一层可以同时存在多个协议</span></span><br><span class="line">	协议是对等实体间的通信规则</span><br></pre></td></tr></table></figure>
+<p><img src="assert/image-20200717233916992.png" alt="image-20200717233916992"></p>
+<h2 id="数据通信-封装"><a href="#数据通信-封装" class="headerlink" title="数据通信-封装"></a>数据通信-封装</h2><p>7层模型，最上一层直接面向用户，最下一层直接面向物理介质。真正的数据传输方向是发送方是由高层送往底层，接收方由底层依次送往高层</p>
+<p>PDU：协议数据单元，对等实体之间通信时所传输的信息内容，每一层封装成的PDU均有自己的名字</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">应用层、表示层和会话层封装成的PDU被统一称为Data(数据)</span><br><span class="line">传输层的被称为数据段(segement)</span><br><span class="line">在网络层的被称为packet(IP数据包，分组)</span><br><span class="line">数据链路层(frame)帧</span><br><span class="line">物理层的被称为bit流</span><br></pre></td></tr></table></figure>
+<p><img src="assert/image-20200718101937721.png" alt="image-20200718101937721"></p>
+<p>在OSI参考模型看来，数据通信时，是一层一层处理，逐层封装好，在物理上进行实在的传输：从源主机（SOURCE）的应用层发出来的数据是有一定格式的协议数据单元，称为PDU（protocol data unit）。应用层发给下一层表示层后，在PDU前面加上了本层控制信息，也就是图中的AH，加在头部。加了头部PH的A-PDU，更新为本层的PDU，也就是要发给第五层会话层的内容。即A-PDU+PH=P-PDU。上一层向下一层发送PDU，逐层加上本层的头部后成为下一层的PDU。直至发到数据链路层，数据链路层还加一个尾部，也就是DT，起到校验作用，如果数据正确，继续传输，数据错误直接丢掉不继续传输。数据链路层发给物理层后，物理层将PDU转换为二进制编码（比特流），通过硬件转换为信号发送出去。这样源主机七层任务完成。</p>
+<p>图右侧是目的主机的数据接收过程：接收到硬件的二进制信号后，物理层转换为PDU发个数据链路层。数据链路层拆掉头部和尾部后，将赤裸的PDU送给网络层。网络层再拆掉头部，送入下一层，逐层拆掉头部，到了送给应用层时，前面不同层添加的头部完全被拆干净，留下原本发送的最原始PDU，也就是用户数据。</p>
+<p><img src="https://img-blog.csdn.net/20181004204141181?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d3d19oZWxsb3dvcmxkX2NvbQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<p><img src="assert/image-20200718220002327.png" alt="image-20200718220002327"></p>
+<p>在构造协议数据单元时会在头部增加控制信息，这些控制信息包括：<br>1) 地址：用来标识发送端和接收端，源主机得知道数据往哪发，目的主机得知道数据是发给谁的</p>
+<p>2) 差错检测编码：用于差错检测或纠正</p>
+<p>3）协议控制：实现协议功能的附加信息(优先级、服务质量及安全控制等)</p>
+<h2 id="层次功能"><a href="#层次功能" class="headerlink" title="层次功能"></a>层次功能</h2><table>
+<thead>
+<tr>
+<th>层次</th>
+<th>功能</th>
+<th>网络协议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>应用层</td>
+<td>提供应用协议，用户与网络面对面菜刀接口</td>
+<td>HTTP、TFTP、FTP、SMTP</td>
+</tr>
+<tr>
+<td>表示层</td>
+<td>数据的编码、翻译、压缩、解压缩、加密、解密、将数据翻译为相对应的编码格式，然后展现到应用程序中</td>
+<td>telnet、Rlogin、SNMP、Gopher</td>
+</tr>
+<tr>
+<td>会话层</td>
+<td>主要用来管理会话(建立连接、保持连接、断开连接)</td>
+<td>SMTP、DNS</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>提供端到端的连接方式(可靠的传输方式、不可靠的传输方式、数据包重组)</td>
+<td>TCP、UDP</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>负责设备的IP地址寻址，寻找网络中目的位置，并在去往目的的多条路径中选择一条最佳的路径</td>
+<td>IP、ICMP、ARP、RARP、AKP、UUCP</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>协商、流量控制、差错控制、物理寻址</td>
+<td>FDDI、Ethernet、Arpanet、PDN、PPP</td>
+</tr>
+<tr>
+<td>物理层</td>
+<td>定义了网络通信接口及介质的标准，以及将上层封装的数据转换为bit的二进制方式进行传输</td>
+<td>IEEE802.1A，IEEE 802.2到IEEE 802.11</td>
+</tr>
+</tbody>
+</table>
+<h2 id="TCP-IP协议族"><a href="#TCP-IP协议族" class="headerlink" title="TCP/IP协议族"></a>TCP/IP协议族</h2><p><img src="https://img-blog.csdnimg.cn/20190105165116628.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxOTIzNjIy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="TCP-IP分层"><a href="#TCP-IP分层" class="headerlink" title="TCP/IP分层"></a>TCP/IP分层</h2><p>TCP/IP通常被认为是一个四层协议系统，每一层负责不同的功能。</p>
+<p><strong>链路层</strong>：数据链路层或网络接口层，通常包括操作系统中的设备驱动程序和计算机中对应的网络接口卡。一起处理与电缆(或其他任何传输媒介)的物理接口细节。</p>
+<p><strong>网络层</strong>：处理分组在网络中的活动，如分组的选路。网络层协议包括IP协议(网际协议)、ICMP协议(Internet互联网控制报文协议)，以及IGMP协议(Internet组管理协议)</p>
+<p><strong>运输层</strong>：主要为两台主机上的应用程序提供端到端的通信。</p>
+<p>​            TCP(传输控制协议)：为两台主机提供高可靠性的数据通信，它所做的工作包括把应用程序交给它的数据分成合适的小块交给下面的网络层，确定接收到的分组，设置发送最后确认分组的超时时钟等。</p>
+<p>​            UDP(用户数据报协议)：为应用层提供一种非常简单的服务，不可靠的数据通信。</p>
+<p><strong>应用层</strong>：负责处理特定的应用程序细节</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">telnet:远程登录</span><br><span class="line">FTP：文件传输协议</span><br><span class="line">SMTP：简单邮件传送协议</span><br><span class="line">SNMP：简单网络管理协议</span><br></pre></td></tr></table></figure>
+<p><img src="assert/image-20200716213159430.png" alt="image-20200716213159430"></p>
+<p>TCP和UDP是两种最为著名的运输层协议，二者都使用IP作为网络层协议。</p>
+<p>TCP虽然使用不可靠的IP服务，但却提供一种可靠的运输层服务</p>
+<p>UDP为应用程序发送和接收数据报，一个数据包是指从发送方传输到接收方的一个信息单元。UDP是不可靠的，不能保证数据报能安全无误的达到最终目的</p>
+<p>IP是网络层上的主要协议，同时被TCP和UDP使用</p>
+<p>ICMP是IP协议的附属协议，IP层用它来与其它主机或路由器交换报错报文和其它重要信息。</p>
+<p>IGMP是Internet组管理协议，它用来把一个UDP数据报多播到多个主机。</p>
+<p>ARP(地址解析协议)和RARP(逆地址解析协议)是某些网络接口使用的特殊协议，用来转换IP层和网络接口层使用的地址。</p>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>当应用程序用TCP传送数据时，数据被送入协议栈中，然后逐个通过每一层知道被当做一串比特流送入网络。</p>
+<p>TCP传给IP的数据单元称作TCP报文段或简称为TCP端</p>
+<p>IP传给网络接口层的数据单元称作IP数据报</p>
+<p>通过以太网传输的比特流称作帧</p>
+<p><img src="assert/image-20200716215110195.png" alt="image-20200716215110195"></p>
+<p>以太网数据帧的物理特性是其长度必须在46~1500字节之间</p>
+<h2 id="编址"><a href="#编址" class="headerlink" title="编址"></a>编址</h2><h3 id="物理地址"><a href="#物理地址" class="headerlink" title="物理地址"></a>物理地址</h3><ul>
+<li>用来标识通信的节点(物理网内部)</li>
+<li>节点由所属的LAN或WAN指定</li>
+<li>在局域网或广域网内是唯一的</li>
+<li>也称为链路地址/硬件地址</li>
+<li>并不是用于物理层，而是用于数据链路层(物理层主要完成比特流的传送，仅涉及到信号转换，不涉及寻址)</li>
+</ul>
+<h3 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h3><ul>
+<li>标识通信节点的网络连接(逻辑网络内)</li>
+<li>该地址有Internet指定，在Internet内唯一</li>
+<li>32bit，点分十进制进行标识</li>
+</ul>
+<h3 id="端口地址"><a href="#端口地址" class="headerlink" title="端口地址"></a>端口地址</h3><ul>
+<li>标识于通信进程</li>
+<li>由操作系统来指定，在一台计算机内是唯一的</li>
+<li>作用于传输层，用于标识应用层的信息</li>
+</ul>
+<h3 id="TCP-IP中的地址与层次"><a href="#TCP-IP中的地址与层次" class="headerlink" title="TCP/IP中的地址与层次"></a>TCP/IP中的地址与层次</h3><p><img src="https://images2015.cnblogs.com/blog/757858/201510/757858-20151001155100871-838532433.jpg" alt="img"></p>
+<h2 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h2><p><img src="assert/image-20200718112652511.png" alt="image-20200718112652511"></p>
+<p>更新图标</p>
+<p><img src="assert/image-20200718103144528.png" alt="image-20200718103144528"></p>
+</div><div class="tags"></div><div class="post-share"><!--if theme.duoshuo_share--><!--  div(class='ds-share flat' data-thread-key=page.path, data-title=page.title, data-url=page.permalink)--><!--   .ds-share-inline--><!--      ul.ds-share-icons-16--><!--        li(data-toggle='ds-share-icons-more')--><!--          a(href='javascript:void(0);').ds-more= __('shareto')--><!--            | :--><!--        li--><!--          a(href='javascript:void(0);' data-service='weibo').ds-weibo 微博--><!--        li--><!--          a(href='javascript:void(0);' data-service='qzone').ds-qzone QQ空间--><!--        li--><!--          a(href='javascript:void(0);' data-service='qqt').ds-qqt 腾讯微博--><!--        li--><!--          a(href='javascript:void(0);' data-service='wechat').ds-wechat 微信--><!--      .ds-share-icons-more--><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><!--a.bds_fbook(href='#', data-cmd='fbook', title='分享到Facebook')--><!--a.bds_twi(href='#', data-cmd='twi', title='分享到Twitter')--><!--a.bds_linkedin(href='#', data-cmd='linkedin', title='分享到linkedin')--><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div><!--if theme.JiaThis_share--><!--  .jiathis_style--><!--      span.jiathis_txt 分享到：--><!--      a.jiathis_button_tsina--><!--      a.jiathis_button_qzone--><!--      a.jiathis_button_weixin--><!--      a.jiathis_button_fb--><!--      a.jiathis_button_linkedin--><!--      a.jiathis_button_twitter--><!--      a.jiathis_button_ydnote--><!--      a.jiathis.jiathis_txt.jiathis_separator.jtico.jtico_jiathis(href="http://www.jiathis.com/share")--><!--      a.jiathis_counter_style--><!--if theme.addToAny_share && theme.addToAny_share.length > 0--><!--  .addToAny_share--><!--    = __("shareto") + " : "--><!--    a(href="https://www.addtoany.com/share?linkurl="+url+"&linkname="+page.title target="_blank")--><!--      img(src="https://static.addtoany.com/buttons/a2a.svg" width="16" height="16" style="vertical-align:middle")--><!--    | &nbsp;--><!--    each a2a_item in theme.addToAny_share--><!--      a(href="https://www.addtoany.com/add_to/"+a2a_item+"?linkurl="+url+"&linkname="+page.title target="_blank")--><!--        img(src="https://static.addtoany.com/buttons/"+a2a_item+".svg" width="16" height="16" style="vertical-align:middle")--><!--      | &nbsp;*/--></div><div class="post-nav"><a href="/2020/08/03/地址解析协议/" class="next"></a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#OSI参考模型"><span class="toc-text">OSI参考模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#层次体系结构"><span class="toc-text">层次体系结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对等层通信"><span class="toc-text">对等层通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据通信-封装"><span class="toc-text">数据通信-封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#层次功能"><span class="toc-text">层次功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-IP协议族"><span class="toc-text">TCP/IP协议族</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-IP分层"><span class="toc-text">TCP/IP分层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#封装"><span class="toc-text">封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编址"><span class="toc-text">编址</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#物理地址"><span class="toc-text">物理地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IP地址"><span class="toc-text">IP地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#端口地址"><span class="toc-text">端口地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-IP中的地址与层次"><span class="toc-text">TCP/IP中的地址与层次</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抓包"><span class="toc-text">抓包</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/08/03/概述/">概述</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/03/地址解析协议/">地址解析协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/03/ping抓包分析/">ping抓包分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/03/Internet协议/">Internet协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/03/Internet控制报文协议/">Internet控制报文协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/03/Internet地址结构/">Internet地址结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/03/用户数据报协议/">用户数据报协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/03/网络连接设备/">网络连接设备</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/03/构成子网和超网/">构成子网和超网</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/03/物理层&链路层/">物理层及数据链路层</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TCP-IP详解/">TCP-IP详解</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li></ul></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><!--if theme.baidusitemap--><!--  a(href=config.root+"baidusitemap.xml")= __("baidusitemap")--><!--  |  |  --><!--if theme.feed--><!--  a(href=config.root+"atom.xml")= __("rss")--><!--  |  |  --><!--a(href=config.root+"about/")= __("about")--></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">tsung.</a></span><!--span  Theme by--><!--  a(rel='nofollow', target='_blank', href='https://github.com/chaooo/hexo-theme-BlueLake')  BlueLake.--><!--if theme.busuanzi == true--><!--  span  Count by--><!--    a(href="http://busuanzi.ibruce.info/")  busuanzi.--><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script></body></html>
