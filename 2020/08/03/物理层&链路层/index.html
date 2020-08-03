@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="生命也许会孤独一阵子，但不会孤独一辈子"><title> | 小虫子O o o</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">小虫子O o o</h1><a id="logo" href="/.">小虫子O o o</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title"></h1><div class="post-meta"><a href="/2020/08/03/物理层&amp;链路层/#comments" class="comment-count"></a><p><span class="date">Aug 03, 2020</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2><p>物理层的功能不需要地址</p>
+<p><img src="assert/image-20200716225644709.png" alt="image-20200716225644709"></p>
+<p>Frame 13： 74 bytes on wire (592 bits),74 bytes captured (592 bits)</p>
+<p>13号帧，线路74字节，实际捕获74字节</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Encapsulation type： Ethernet(1)  # 封装类型</span><br><span class="line">Arrival Time: # 捕获日期和时间</span><br><span class="line">Epoch Time：# 时间戳，另一种时间表示方式</span><br><span class="line">[Time delta from previous captured frame: ]   #此包与前一包的时间间隔</span><br><span class="line">[Time since reference or first frame: ]       #此包与第一帧的时间间隔</span><br><span class="line">Frame Number: # 帧序号</span><br><span class="line">Frame Length: # 帧长度</span><br><span class="line">Capture Length： # 捕获长度 （通常情况下帧长度和捕获长度是相同的）</span><br><span class="line">Protocols in frame：帧内封装的协议层次结构</span><br></pre></td></tr></table></figure>
+<p>EtherType 是以太帧里的一个字段，用来指明应用于帧数据字段的协议</p>
+<h2 id="链路层"><a href="#链路层" class="headerlink" title="链路层"></a>链路层</h2><p>主要目的：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 为IP模块发送和接收IP数据报</span><br><span class="line">2. 为ARP模块发送ARP请求和接收ARP应答</span><br><span class="line">3. 为RARP发送RARP请求和接收RARP应答</span><br></pre></td></tr></table></figure>
+<h3 id="以太网和IEEE-802-封装"><a href="#以太网和IEEE-802-封装" class="headerlink" title="以太网和IEEE 802 封装"></a>以太网和IEEE 802 封装</h3><p>以太网是当今TCP/IP采用的主要的局域网技术，它采用一种称作<strong>CSMA/CD的媒体接入方法</strong>，其意思是带冲突检测的载波侦听多路接入。它的速率是10Mb/s，地址为48bit。</p>
+<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1595062714663&amp;di=bce2d089aeac55bb6145289deea316aa&amp;imgtype=0&amp;src=http%3A%2F%2Fjc.feikuaixue.com%2Fwp-content%2Fuploads%2F2015%2F10%2Fframe.png" alt="img"></p>
+<p>前导码(8B)：在帧的前面插入8B，使接收端和发送端进行时钟同步，其中7B为前同步码，1B为帧开始定界符。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">前同步码均为：10101010</span><br><span class="line">帧开始定界符为：10101011，最后一个字节为告诉接收端“重要的帧开始了”</span><br></pre></td></tr></table></figure>
+<p>目的MAC(6B)：包含目的主机网卡MAC地址或广播地址</p>
+<p>源MAC(6B)：发送端的网卡MAC地址</p>
+<p>类型(2B)：之处接收端收到该帧时，将该帧的载荷数据交付给谁处理</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0x0800:IPv4</span><br></pre></td></tr></table></figure>
+<p>802.1Q标签：</p>
+<p>CRC(4B)：为了让接收端对接收到的帧进行差错检验(也做帧校验序列，FCS)</p>
+<blockquote>
+<p> FCS: 该字段有 4 个字节，表示帧校验序列，用于校验帧是否出错。该字段内容已被网络设备滤去，抓包软件已无法获取。</p>
+</blockquote>
+<p>帧间距：表示两个Frame之间间隔大小，设备发送完一个Frame后，并不会立刻发送下一个，而是等待IFG的间隔才会继续发送。</p>
+<blockquote>
+<p>最小的帧间隙为12bytes，主要为了避免冲突(参考以太网的CSMA/CD特定)</p>
+</blockquote>
+<h3 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h3><p><img src="assert/image-20200718222220022.png" alt="image-20200718222220022"></p>
+<p><strong>为什么wireshark抓不到帧尾的FCS 4字节和以太网V2的前序8字节</strong>？</p>
+<p>因为wireshark把这2个都给过滤了。</p>
+<p>在物理层上网卡要先去掉前导同步码和帧开始定界符，然后对帧进行CRC检验，如果帧校验和错，就丢弃此帧。如果校验和正确，就判断帧的目的硬件地址是否符合自己的接收条件（目的地址是自己的物理硬件地址、广播地址、可接收的多播硬件地址等），如果符合，就将帧交“设备驱动程序”做进一步处理。这时我们的抓包软件才能抓到数据，因此，抓包软件抓到的是去掉前导同步码、帧开始分界符、FCS之外的数据</p>
+<p>通过OmniPeek抓包查看FCS内容：</p>
+<p><img src="assert/image-20200718224849805.png" alt="image-20200718224849805" style="zoom:150%;"></p>
+<h3 id="环回"><a href="#环回" class="headerlink" title="环回"></a>环回</h3><p>概念：使用Internet协议与同一计算机上的服务器通信。为实现这个目标，大多数实现支持一种工作在网络层的环回能力，通常使用一个虚拟的环回网络接口来实现。</p>
+<h3 id="MTU"><a href="#MTU" class="headerlink" title="MTU"></a>MTU</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>MTU：最大传输单元，MTU是数据链路层的概念，MTU限制的是数据链路层的payload，即上层协议的大小，如IP，ICMP等。</p>
+<p><strong>（涉及到的内容分片和重组）</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">OSI中的层</th>
+<th style="text-align:left">功能</th>
+<th style="text-align:left">TCP/IP协议族</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">应用层</td>
+<td style="text-align:left">文件传输，电子邮件，文件服务，虚拟终端</td>
+<td style="text-align:left">TFTP，HTTP，SNMP，FTP，SMTP，DNS，Telnet</td>
+</tr>
+<tr>
+<td style="text-align:left">表示层</td>
+<td style="text-align:left">数据格式化，代码转换，数据加密</td>
+<td style="text-align:left">没有协议</td>
+</tr>
+<tr>
+<td style="text-align:left">会话层</td>
+<td style="text-align:left">解除或建立与别的接点的联系</td>
+<td style="text-align:left">没有协议</td>
+</tr>
+<tr>
+<td style="text-align:left">传输层</td>
+<td style="text-align:left">提供端对端的接口</td>
+<td style="text-align:left">TCP，UDP</td>
+</tr>
+<tr>
+<td style="text-align:left">网络层</td>
+<td style="text-align:left">为数据包选择路由</td>
+<td style="text-align:left">IP，ICMP，RIP，OSPF，BGP，IGMP</td>
+</tr>
+<tr>
+<td style="text-align:left">数据链路层</td>
+<td style="text-align:left">传输有地址的帧以及错误检测功能</td>
+<td style="text-align:left">SLIP，CSLIP，PPP，ARP，RARP，MTU</td>
+</tr>
+<tr>
+<td style="text-align:left">物理层</td>
+<td style="text-align:left">以二进制数据形式在物理媒体上传输数据</td>
+<td style="text-align:left">ISO2110，IEEE802，IEEE802.2</td>
+</tr>
+</tbody>
+</table>
+<h4 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h4><h4 id="为什么是1500"><a href="#为什么是1500" class="headerlink" title="为什么是1500?"></a>为什么是1500?</h4><blockquote>
+<p>标准的以太网数据帧大小是：<code>1518</code>，头信息有14字节，尾部校验和FCS占了4字节，所以真正留给上层协议传输数据的大小就是：1518 - 14 - 4 = 1500</p>
+</blockquote>
+<h4 id="抓包-1"><a href="#抓包-1" class="headerlink" title="抓包"></a>抓包</h4><ol>
+<li><p>ping 2.2.2.2</p>
+<p><img src="assert/image-20200718232244004.png" alt="image-20200718232244004"></p>
+</li>
+<li><p>ping 2.2.2.2 -l 1</p>
+<p>数据大小设置为1，此时抓包可见Padding内容，使得payload达到最小要求(MTU–&gt; 46，若加上头部信息，为64)</p>
+<p><img src="assert/image-20200718232325692.png" alt="image-20200718232325692"></p>
+</li>
+<li><p>ping 2.2.2.2 -l 2000</p>
+<p>出现了分片，分为1514及562两个报文</p>
+<p><img src="assert/image-20200718232934289.png" alt="image-20200718232934289"></p>
+</li>
+</ol>
+<p>1514 = 6+6+2+20(IPv4头部)+1480(payload)</p>
+</div><div class="tags"></div><div class="post-share"><!--if theme.duoshuo_share--><!--  div(class='ds-share flat' data-thread-key=page.path, data-title=page.title, data-url=page.permalink)--><!--   .ds-share-inline--><!--      ul.ds-share-icons-16--><!--        li(data-toggle='ds-share-icons-more')--><!--          a(href='javascript:void(0);').ds-more= __('shareto')--><!--            | :--><!--        li--><!--          a(href='javascript:void(0);' data-service='weibo').ds-weibo 微博--><!--        li--><!--          a(href='javascript:void(0);' data-service='qzone').ds-qzone QQ空间--><!--        li--><!--          a(href='javascript:void(0);' data-service='qqt').ds-qqt 腾讯微博--><!--        li--><!--          a(href='javascript:void(0);' data-service='wechat').ds-wechat 微信--><!--      .ds-share-icons-more--><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><!--a.bds_fbook(href='#', data-cmd='fbook', title='分享到Facebook')--><!--a.bds_twi(href='#', data-cmd='twi', title='分享到Twitter')--><!--a.bds_linkedin(href='#', data-cmd='linkedin', title='分享到linkedin')--><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div><!--if theme.JiaThis_share--><!--  .jiathis_style--><!--      span.jiathis_txt 分享到：--><!--      a.jiathis_button_tsina--><!--      a.jiathis_button_qzone--><!--      a.jiathis_button_weixin--><!--      a.jiathis_button_fb--><!--      a.jiathis_button_linkedin--><!--      a.jiathis_button_twitter--><!--      a.jiathis_button_ydnote--><!--      a.jiathis.jiathis_txt.jiathis_separator.jtico.jtico_jiathis(href="http://www.jiathis.com/share")--><!--      a.jiathis_counter_style--><!--if theme.addToAny_share && theme.addToAny_share.length > 0--><!--  .addToAny_share--><!--    = __("shareto") + " : "--><!--    a(href="https://www.addtoany.com/share?linkurl="+url+"&linkname="+page.title target="_blank")--><!--      img(src="https://static.addtoany.com/buttons/a2a.svg" width="16" height="16" style="vertical-align:middle")--><!--    | &nbsp;--><!--    each a2a_item in theme.addToAny_share--><!--      a(href="https://www.addtoany.com/add_to/"+a2a_item+"?linkurl="+url+"&linkname="+page.title target="_blank")--><!--        img(src="https://static.addtoany.com/buttons/"+a2a_item+".svg" width="16" height="16" style="vertical-align:middle")--><!--      | &nbsp;*/--></div><div class="post-nav"><a href="/2018/11/19/tcpdump基础用法说明/" class="next">tcpdump基础用法说明</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#物理层"><span class="toc-text">物理层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#链路层"><span class="toc-text">链路层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#以太网和IEEE-802-封装"><span class="toc-text">以太网和IEEE 802 封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#抓包"><span class="toc-text">抓包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#环回"><span class="toc-text">环回</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MTU"><span class="toc-text">MTU</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#概念"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#作用："><span class="toc-text">作用：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么是1500"><span class="toc-text">为什么是1500?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#抓包-1"><span class="toc-text">抓包</span></a></li></ol></li></ol></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/08/03/物理层&链路层/">物理层&链路层</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/19/tcpdump基础用法说明/">tcpdump基础用法说明</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/18/Linux下IP及DNS配置/">Linux下IP及DNS配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/hello-world/">Hello World</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">2</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li></ul></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><!--if theme.baidusitemap--><!--  a(href=config.root+"baidusitemap.xml")= __("baidusitemap")--><!--  |  |  --><!--if theme.feed--><!--  a(href=config.root+"atom.xml")= __("rss")--><!--  |  |  --><!--a(href=config.root+"about/")= __("about")--></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">tsung.</a></span><!--span  Theme by--><!--  a(rel='nofollow', target='_blank', href='https://github.com/chaooo/hexo-theme-BlueLake')  BlueLake.--><!--if theme.busuanzi == true--><!--  span  Count by--><!--    a(href="http://busuanzi.ibruce.info/")  busuanzi.--><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script></body></html>
