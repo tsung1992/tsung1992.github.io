@@ -28,7 +28,6 @@
 <p>因为wireshark把这2个都给过滤了。</p>
 <p>在物理层上网卡要先去掉前导同步码和帧开始定界符，然后对帧进行CRC检验，如果帧校验和错，就丢弃此帧。如果校验和正确，就判断帧的目的硬件地址是否符合自己的接收条件（目的地址是自己的物理硬件地址、广播地址、可接收的多播硬件地址等），如果符合，就将帧交“设备驱动程序”做进一步处理。这时我们的抓包软件才能抓到数据，因此，抓包软件抓到的是去掉前导同步码、帧开始分界符、FCS之外的数据</p>
 <p>通过OmniPeek抓包查看FCS内容：<br><img src="/images/image-20200718224849805.png" alt="image-20200718224849805"></p>
-<p><img src="assert/image-20200718224849805.png" alt="image-20200718224849805" style="zoom:150%;"></p>
 <h3 id="环回"><a href="#环回" class="headerlink" title="环回"></a>环回</h3><p>概念：使用Internet协议与同一计算机上的服务器通信。为实现这个目标，大多数实现支持一种工作在网络层的环回能力，通常使用一个虚拟的环回网络接口来实现。</p>
 <h3 id="MTU"><a href="#MTU" class="headerlink" title="MTU"></a>MTU</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>MTU：最大传输单元，MTU是数据链路层的概念，MTU限制的是数据链路层的payload，即上层协议的大小，如IP，ICMP等。</p>
 <p><strong>（涉及到的内容分片和重组）</strong></p>
