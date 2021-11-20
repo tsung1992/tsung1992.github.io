@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tsung1992.github.io/http/JWT/</loc>
+    
+    <lastmod>2021-11-20</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tsung1992.github.io/http/Content-Type/</loc>
     
     <lastmod>2021-11-20</lastmod>
@@ -137,6 +144,27 @@
   </url>
   
   <url>
+    <loc>http://tsung1992.github.io/tags/http/</loc>
+    <lastmod>2021-11-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tsung1992.github.io/tags/HTTP/</loc>
+    <lastmod>2021-11-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tsung1992.github.io/tags/WEB/</loc>
+    <lastmod>2021-11-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://tsung1992.github.io/tags/docker/</loc>
     <lastmod>2021-11-20</lastmod>
     <changefreq>daily</changefreq>
@@ -145,13 +173,6 @@
   
   <url>
     <loc>http://tsung1992.github.io/tags/%E5%AE%B9%E5%99%A8/</loc>
-    <lastmod>2021-11-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tsung1992.github.io/tags/http/</loc>
     <lastmod>2021-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -188,7 +209,7 @@
   </url>
   
   <url>
-    <loc>http://tsung1992.github.io/categories/docker/</loc>
+    <loc>http://tsung1992.github.io/categories/HTTP/</loc>
     <lastmod>2021-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -202,7 +223,7 @@
   </url>
   
   <url>
-    <loc>http://tsung1992.github.io/categories/HTTP/</loc>
+    <loc>http://tsung1992.github.io/categories/docker/</loc>
     <lastmod>2021-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
