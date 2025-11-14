@@ -1,0 +1,143 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>地址解析协议 | 小虫子O o o</title><meta name="description" content="地址解析协议(ARP)提供了一种IPv4地址和各种网络技术使用的硬件地址之间的映射。 ARP仅用于IPv4、IPv6使用邻居发现协议，被合并入ICMPv6 直接交付ARP运行要求：仅适用于广播网络，链路层能将一个消息交付到它连接的所有网络设备。 在一个共享的链路层网段上，ARP向所有主机发送一个称为ARP请求的以太网帧。 以太网主机在同一广播域中，ARP查询使用链路层广播帧发送，并被所有主机接收。"><meta name="author" content="tsung"><meta name="copyright" content="tsung"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="http://tsung1992.github.io/network/%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><meta property="og:type" content="article"><meta property="og:title" content="地址解析协议"><meta property="og:url" content="http://tsung1992.github.io/network/%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE/"><meta property="og:site_name" content="小虫子O o o"><meta property="og:description" content="地址解析协议(ARP)提供了一种IPv4地址和各种网络技术使用的硬件地址之间的映射。 ARP仅用于IPv4、IPv6使用邻居发现协议，被合并入ICMPv6 直接交付ARP运行要求：仅适用于广播网络，链路层能将一个消息交付到它连接的所有网络设备。 在一个共享的链路层网段上，ARP向所有主机发送一个称为ARP请求的以太网帧。 以太网主机在同一广播域中，ARP查询使用链路层广播帧发送，并被所有主机接收。"><meta property="og:image" content="/images/v2-563d6165637c967de4b68df7739b7457_1440w.jpg"><meta property="article:published_time" content="2020-08-25T16:00:00.000Z"><meta property="article:modified_time" content="2025-07-19T13:45:57.779Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '8.1.1',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: {"limitCount":50,"languages":{"author":"作者: tsung","link":"链接: ","source":"来源: 小虫子O o o","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2025-07-19 21:45:57'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="小虫子O o o" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">17</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">9</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E4%BA%A4%E4%BB%98"><span class="toc-number">1.</span> <span class="toc-text">直接交付</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ARP%E7%BC%93%E5%AD%98%E8%A1%A8"><span class="toc-number">2.</span> <span class="toc-text">ARP缓存表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81ARP"><span class="toc-number">2.1.</span> <span class="toc-text">动态ARP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81ARP"><span class="toc-number">2.2.</span> <span class="toc-text">静态ARP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ARP%E5%B8%A7%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">ARP帧格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%8D%E8%B4%B9ARP"><span class="toc-number">4.</span> <span class="toc-text">免费ARP</span></a></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(/images/v2-563d6165637c967de4b68df7739b7457_1440w.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">小虫子O o o</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">地址解析协议</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-08-25T16:00:00.000Z" title="发表于 2020-08-26 00:00:00">2020-08-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-07-19T13:45:57.779Z" title="更新于 2025-07-19 21:45:57">2025-07-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/TCP-IP%E8%AF%A6%E8%A7%A3/">TCP-IP详解</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">787</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><p>地址解析协议(ARP)提供了一种IPv4地址和各种网络技术使用的硬件地址之间的映射。</p>
+<p>ARP仅用于IPv4、IPv6使用邻居发现协议，被合并入ICMPv6</p>
+<h2 id="直接交付"><a href="#直接交付" class="headerlink" title="直接交付"></a>直接交付</h2><p>ARP运行要求：仅适用于广播网络，链路层能将一个消息交付到它连接的所有网络设备。</p>
+<p>在一个共享的链路层网段上，ARP向所有主机发送一个称为ARP请求的以太网帧。</p>
+<p>以太网主机在同一广播域中，ARP查询使用链路层广播帧发送，并被所有主机接收。</p>
+<p>IP地址匹配的主机直接向请求主机返回响应。IP地址不匹配的主机主动丢弃ARP查询</p>
+<h2 id="ARP缓存表"><a href="#ARP缓存表" class="headerlink" title="ARP缓存表"></a>ARP缓存表</h2><p>ARP高效运行的关键是维护每个主机结合路由器上的ARP缓存表。</p>
+<p>该缓存使用地址解析为每个接口维护从网络层地址到硬件地址的最新应用。</p>
+<p>当IPv4地址映射到硬件地址时，它对应于高速缓存中的一个条目，其正常到期时间是条目创建开始后的20分钟。</p>
+<p>查看ARP缓存表：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">arp -a</span><br><span class="line"></span><br><span class="line">接口: 192.168.31.33 --- 0xe</span><br><span class="line">  Internet 地址         物理地址              类型</span><br><span class="line">  192.168.31.1          28-6c-07-0a-11-3a     动态        </span><br><span class="line">  192.168.31.157        88-bf-e4-99-fa-b0     动态        </span><br><span class="line">  192.168.31.255        ff-ff-ff-ff-ff-ff     静态        </span><br><span class="line">  224.0.0.2             01-00-5e-00-00-02     静态        </span><br><span class="line">  224.0.0.22            01-00-5e-00-00-16     静态        </span><br></pre></td></tr></table></figure>
+
+<h3 id="动态ARP"><a href="#动态ARP" class="headerlink" title="动态ARP"></a>动态ARP</h3><p>动态ARP指的是通过报文去学习ARP表项，不需要管理员手工建立和维护，动态条目随时间推移自动添加和删除</p>
+<blockquote>
+<ul>
+<li>每个动态ARP缓存条目默认的生命周期是两分钟。当超过两分钟，该条目会被删掉。所以，生命周期也被称为超时值。</li>
+<li>延长规则：当ARP条目已存在，使用该条目后，将会重设超时值为两分钟。</li>
+</ul>
+</blockquote>
+<h3 id="静态ARP"><a href="#静态ARP" class="headerlink" title="静态ARP"></a>静态ARP</h3><p>静态ARP指的是需要管理员手工指定建立AP-MAC映射表，需要管理员手工建立和维护。</p>
+<h2 id="ARP帧格式"><a href="#ARP帧格式" class="headerlink" title="ARP帧格式"></a>ARP帧格式</h2><p><img src= "/img/loading.gif" data-lazy-src="/images/2012041215590890.jpg" alt="2012041215590890"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200719180849457.png" alt="image-20200719180849457"></p>
+<ul>
+<li>硬件类型：表示硬件地址的类型，值为1表示以太网地址</li>
+<li>协议类型：表示要映射的协议地址类型，值为0x0800表示IP地址类型</li>
+<li>硬件地址长度和协议地址长度：分别指出硬件地址和协议的长度，以字节为单位。对于以太网上 IP 地址的ARP请求或应答来说，它们的值分别为 6 和 4</li>
+<li>操作类型(op)：1表示ARP请求，2表示ARP应答，RARP 请求为 3，RARP 响应为 4</li>
+</ul>
+<h2 id="免费ARP"><a href="#免费ARP" class="headerlink" title="免费ARP"></a>免费ARP</h2><p>免费ARP：发生在一台主机发送ARP请求以寻找自己的地址</p>
+<p>应用：</p>
+<ul>
+<li>用于检测IP地址冲突，当一台主机发送了免费ARP请求报文后，如果收到了ARP响应报文，则说明网络内衣存在使用该IP的主机</li>
+<li>利用免费ARP确认设备接口IP地址</li>
+<li>使用免费ARP报文，更新某些设备的ARP表现</li>
+<li>利用免费ARP的攻击</li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">tsung</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://tsung1992.github.io/network/%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE/">http://tsung1992.github.io/network/%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://tsung1992.github.io" target="_blank">小虫子O o o</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/images/v2-563d6165637c967de4b68df7739b7457_1440w.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/Linux/tcpdump%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95%E8%AF%B4%E6%98%8E/"><img class="prev-cover" data-lazy-src="/images/20200826224021.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">tcpdump基础用法说明</div></div></a></div><div class="next-post pull-right"><a href="/network/%E7%89%A9%E7%90%86%E5%B1%82&amp;%E9%93%BE%E8%B7%AF%E5%B1%82/"><img class="next-cover" data-lazy-src="/images/001.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">物理层及数据链路层</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By tsung</div><div class="framework-info"><span>框架 </span><a href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/search/local-search.js"></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script><div class="js-pjax"></div><script defer="defer" id="ribbon_piao" mobile="false" src="/js/third-party/piao.js"></script><script src="/js/third-party/click_heart.js" async="async"></script></div></body></html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Internet地址结构 | 小虫子O o o</title><meta name="description" content="概述IP地址–通用标识符  唯一标识互联网上的主机或路由器(唯一、通用、网络连接)  主机标识符  name：是什么，可读性强 address：在哪里，软件效率高 route：如何达到  IP地址表示IPv4地址 长度为32 bit 采用所谓的点分四组或点分十进制表示法 每个数字是一个非负整数，范围为[0-255]，代表整个IP地址的四分之一  IPv6地址 长度为128 bit IPv6地址的传"><meta name="author" content="tsung"><meta name="copyright" content="tsung"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="http://tsung1992.github.io/network/Internet%E5%9C%B0%E5%9D%80%E7%BB%93%E6%9E%84/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><meta property="og:type" content="article"><meta property="og:title" content="Internet地址结构"><meta property="og:url" content="http://tsung1992.github.io/network/Internet%E5%9C%B0%E5%9D%80%E7%BB%93%E6%9E%84/"><meta property="og:site_name" content="小虫子O o o"><meta property="og:description" content="概述IP地址–通用标识符  唯一标识互联网上的主机或路由器(唯一、通用、网络连接)  主机标识符  name：是什么，可读性强 address：在哪里，软件效率高 route：如何达到  IP地址表示IPv4地址 长度为32 bit 采用所谓的点分四组或点分十进制表示法 每个数字是一个非负整数，范围为[0-255]，代表整个IP地址的四分之一  IPv6地址 长度为128 bit IPv6地址的传"><meta property="og:image" content="/images/v2-61ea1ce06d98c376146d9f4afa644abd_1440w.jpg"><meta property="article:published_time" content="2020-11-04T16:00:00.000Z"><meta property="article:modified_time" content="2025-07-19T13:45:57.675Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '8.1.1',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: {"limitCount":50,"languages":{"author":"作者: tsung","link":"链接: ","source":"来源: 小虫子O o o","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2025-07-19 21:45:57'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="小虫子O o o" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">17</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">9</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IP%E5%9C%B0%E5%9D%80%E8%A1%A8%E7%A4%BA"><span class="toc-number">2.</span> <span class="toc-text">IP地址表示</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#IPv4%E5%9C%B0%E5%9D%80"><span class="toc-number">2.1.</span> <span class="toc-text">IPv4地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IPv6%E5%9C%B0%E5%9D%80"><span class="toc-number">2.2.</span> <span class="toc-text">IPv6地址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IP%E5%9C%B0%E5%9D%80%E7%BB%93%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">IP地址结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%B1%BB%E5%AF%BB%E5%9D%80"><span class="toc-number">3.1.</span> <span class="toc-text">分类寻址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80"><span class="toc-number">4.</span> <span class="toc-text">特殊网络地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">子网掩码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98%E9%95%BF%E5%BA%A6%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81"><span class="toc-number">6.</span> <span class="toc-text">可变长度子网掩码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%A1%AE%E5%AE%9A%E5%8F%AF%E5%8F%98%E5%AD%90%E7%BD%91%E9%95%BF%E5%BA%A6%EF%BC%9F"><span class="toc-number">6.1.</span> <span class="toc-text">如何确定可变子网长度？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%BF%E6%92%AD%E5%9C%B0%E5%9D%80"><span class="toc-number">7.</span> <span class="toc-text">广播地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPv6%E5%9C%B0%E5%9D%80%E5%92%8C%E6%8E%A5%E5%8F%A3%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="toc-number">8.</span> <span class="toc-text">IPv6地址和接口标识符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CIDR%E5%92%8C%E8%81%9A%E5%90%88"><span class="toc-number">9.</span> <span class="toc-text">CIDR和聚合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%BC%80"><span class="toc-number">9.1.</span> <span class="toc-text">前缀</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E6%92%AD-%E5%A4%9A%E6%92%AD-%E5%B9%BF%E6%92%AD%E5%9C%B0%E5%9D%80"><span class="toc-number">10.</span> <span class="toc-text">单播&#x2F;多播&#x2F;广播地址</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E6%92%AD-Unicast"><span class="toc-number">10.1.</span> <span class="toc-text">单播(Unicast)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%92%AD-Multicast"><span class="toc-number">10.2.</span> <span class="toc-text">多播(Multicast)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E6%92%AD-Broadcast"><span class="toc-number">10.3.</span> <span class="toc-text">广播(Broadcast)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%93%E7%94%A8%E7%BD%91"><span class="toc-number">11.</span> <span class="toc-text">专用网</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AF%E8%AF%AD"><span class="toc-number">12.</span> <span class="toc-text">术语</span></a></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(/images/v2-61ea1ce06d98c376146d9f4afa644abd_1440w.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">小虫子O o o</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">Internet地址结构</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-11-04T16:00:00.000Z" title="发表于 2020-11-05 00:00:00">2020-11-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-07-19T13:45:57.675Z" title="更新于 2025-07-19 21:45:57">2025-07-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/TCP-IP%E8%AF%A6%E8%A7%A3/">TCP-IP详解</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>IP地址–通用标识符</p>
+<ul>
+<li>唯一标识互联网上的主机或路由器(唯一、通用、网络连接)</li>
+</ul>
+<p>主机标识符</p>
+<ul>
+<li>name：是什么，可读性强</li>
+<li>address：在哪里，软件效率高</li>
+<li>route：如何达到</li>
+</ul>
+<h2 id="IP地址表示"><a href="#IP地址表示" class="headerlink" title="IP地址表示"></a>IP地址表示</h2><h4 id="IPv4地址"><a href="#IPv4地址" class="headerlink" title="IPv4地址"></a>IPv4地址</h4><ul>
+<li>长度为32 bit</li>
+<li>采用所谓的点分四组或点分十进制表示法</li>
+<li>每个数字是一个非负整数，范围为[0-255]，代表整个IP地址的四分之一</li>
+</ul>
+<h4 id="IPv6地址"><a href="#IPv6地址" class="headerlink" title="IPv6地址"></a>IPv6地址</h4><ul>
+<li>长度为128 bit</li>
+<li>IPv6地址的传统表示方法为采用称为块或字段的4个十六进制数，这些称为块或字段的数由&#x3D;&#x3D;冒号&#x3D;&#x3D;分隔</li>
+</ul>
+<p>IPv6地址简化表示：</p>
+<ul>
+<li>一个块中前导的零必须压缩</li>
+<li>全零的块可以省略，并用符号::代替(::只能用于影响最大的地方，压缩最多的零)，一个IPv6地址中只能使用一次::符号</li>
+<li>在IPv6格式中嵌入IPv4地址可使用混合符号形式，紧接着IPv4部分的地址块的值为ffff，地址的其余部分使用点分四组格式(IPv4映射的IPv6地址)【::ffff:10.0.0.1 –&gt; 10.0.0.1】</li>
+<li>IPv6地址的低32位通常采用点分四组表示法（IPv4兼容的IPv6）【::0102:f001 –&gt; 1.2.240.1】</li>
+<li>a到f的16进制数字应该用小写表示</li>
+</ul>
+<h2 id="IP地址结构"><a href="#IP地址结构" class="headerlink" title="IP地址结构"></a>IP地址结构</h2><h3 id="分类寻址"><a href="#分类寻址" class="headerlink" title="分类寻址"></a>分类寻址</h3><p>IP地址组成：网络部分和主机部分</p>
+<blockquote>
+<ul>
+<li>网络部分：用于识别接口使用的IP地址在哪个网络中发现</li>
+<li>主机地址：用于识别由网络部分给出的网络中的特定主机</li>
+</ul>
+</blockquote>
+<p>地址中的一些连续位称为网络号，其余称为主机号。</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2681518048,2999374401&fm=26&gp=0.jpg" alt="img"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200719202429136.png" alt="image-20200719202429136"></p>
+<p>用于表示通信节点的IP地址为A、B、C三类，用于为Internet(单播地址)中的接口分配地址</p>
+<p>D：供组播使用</p>
+<p>E：保留地址</p>
+<h2 id="特殊网络地址"><a href="#特殊网络地址" class="headerlink" title="特殊网络地址"></a>特殊网络地址</h2><table>
+<thead>
+<tr>
+<th>特殊地址</th>
+<th>Net id</th>
+<th>Host ID</th>
+<th>源&#x2F;目的地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>网络地址</td>
+<td>特定的</td>
+<td>全0</td>
+<td>都不是</td>
+</tr>
+<tr>
+<td>直接广播地址</td>
+<td>特定的</td>
+<td>全1</td>
+<td>目的地址</td>
+</tr>
+<tr>
+<td>受限广播地址</td>
+<td>全1</td>
+<td>全1</td>
+<td>目的地址</td>
+</tr>
+<tr>
+<td>本网络上的本主机</td>
+<td>全0</td>
+<td>全0</td>
+<td>源地址(0.0.0.0)</td>
+</tr>
+<tr>
+<td>本网络上的特定主机</td>
+<td>全0</td>
+<td>特定的</td>
+<td>目的地址</td>
+</tr>
+<tr>
+<td>环回地址</td>
+<td>127</td>
+<td>任意</td>
+<td>目的主机</td>
+</tr>
+</tbody></table>
+<p> 网络地址：仅用于标识网络，而不标识网络内的任意节点，标识的是一个网络集合</p>
+<p>直接广播地址：标识对特定网络的广播</p>
+<p>受限广播地址(本地广播地址)：标识对本地网络的广播</p>
+<p>本网络上的特定主机：仅可作为源地址，获取自己的IP地址而临时使用的IP地址</p>
+<h2 id="子网掩码"><a href="#子网掩码" class="headerlink" title="子网掩码"></a>子网掩码</h2><p>子网掩码是由一台主机或路由器使用的分配位，以确定如何从一台主机对应IP地址中获取网络和子网信息。</p>
+<p>掩码由路由器和主机使用，以&#x3D;&#x3D;确定一个IP地址的网络&#x2F;子网部分的结束和主机部分的开始。&#x3D;&#x3D;</p>
+<ul>
+<li>表示网络或子网的大小</li>
+<li>32 bits 二进制数</li>
+<li>1表示一个IP地址的对应位与一个地址的网络&#x2F;子网部分的对应位集合</li>
+<li>0表示一个IP地址的对应位作为主机ID的一部分</li>
+</ul>
+<h2 id="可变长度子网掩码"><a href="#可变长度子网掩码" class="headerlink" title="可变长度子网掩码"></a>可变长度子网掩码</h2><p>VSLM(可变长度子网掩码)：用于分割一个网络号，使每个子网支持不同数量的主机。提高子网结构的灵活性</p>
+<h3 id="如何确定可变子网长度？"><a href="#如何确定可变子网长度？" class="headerlink" title="如何确定可变子网长度？"></a>如何确定可变子网长度？</h3><p>确定可变子网掩码长度的过程其实就是划分子网的过程。</p>
+<p>当从主机位中借1位二进制位时，当前网络可划分出2个子网，每个子网主机数是原来的1&#x2F;2-2；当从主机位中借2位二进制位时，当前网络可划分出4个子网，每个子网主机数是原来的1&#x2F;4-2……当从主机位中借N位二进制位时，当前网络可划分为2N个子网，每个子网主机数是原来的2-N-2</p>
+<p>192.168.10.0&#x2F;24这个C类网络要划分出2个相等主机数的子网，则</p>
+<ol>
+<li><p>网络号与子网掩码转为二进制</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">网络号  192.168.10.0  转为二进制 11000000 10101000  00001010 00000000</span><br><span class="line">子网掩码 255.255.255.0  转为二进制 11111111 11111111  11111111 00000000</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>要把一个网络划分成两个相等子网，子网掩码要加1位，变成11111111 11111111  11111111 10000000</p>
+</li>
+<li><p>网络号从主机位借一位用于子网11000000 10101000  00001010 XYYYYYYY</p>
+<p>X位代表借入的，用于表示子网号，7个Y代表剩余主机位，X有两个值0和1。</p>
+<p>1）为0时：</p>
+<p>​        11000000 10101000  00001010 0YYYYYYY </p>
+<p>​        当Y全为0，表示划分出的这个子网的网络号，为11000000 10101000  00001010 00000000</p>
+<p>​        其主机可用IP地址范围是：</p>
+<p>​        11000000 10101000 00001010 0 0000001（192.168.10.1，掩码：255.255.255.128）</p>
+<p>​        至</p>
+<p>​        11000000 10101000  00001010 0 1111110（192.168.10.126，掩码：255.255.255.128）</p>
+<p>2）为1时</p>
+<p>​        11000000 10101000  00001010 1YYYYYYY</p>
+<p>​        当Y全为0，表示划分出的这个子网的网络号，为11000000 10101000  00001010 10000000</p>
+<p>​        其主机可用IP地址范围是：</p>
+<p>​        11000000 10101000  00001010 1 0000001（192.168.10.129，掩码：255.255.255.128）</p>
+<p>​        至</p>
+<p>​        11000000 10101000  00001010 1 1111110（192.168.10.254，掩码：255.255.255.128）</p>
+<p>综述，192.168.10.0&#x2F;24要划分成两个相等主机数的子网，子网掩码要改为25位，划分出的两个子网情况是：</p>
+<p>子网1：</p>
+<p>网络号：192.168.10.0    子网掩码：255.255.255.128    广播地址：192.168.10.127</p>
+<p>主机IP地址范围：192.168.10.1至192.168.10.126</p>
+<p>子网2：</p>
+<p> 网络号：192.168.10.128    子网掩码：255.255.255.128    广播地址：192.168.10.255</p>
+<p> 主机IP地址范围：192.168.10.129至192.168.10.254</p>
+</li>
+</ol>
+<h2 id="广播地址"><a href="#广播地址" class="headerlink" title="广播地址"></a>广播地址</h2><ol>
+<li><p>定向广播地址</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">1. 通过子网掩码取反与IP地址按位或运算得到</span><br><span class="line">2. 可作为一个单独的数据报通过Internet路由直至到达目标子网，再作为一组数据报发送给子网中所有主机</span><br><span class="line">* 由于安全问题，其在Internet中被禁用</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>本地网络广播(有限广播)</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">1. 特殊地址：255.255.255.255</span><br><span class="line">2. 不会被路由器转发,链路层的广播机制用于支持它们</span><br><span class="line">3. 广播地址可用于IPv4中，而IPv6仅使用组播地址</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="IPv6地址和接口标识符"><a href="#IPv6地址和接口标识符" class="headerlink" title="IPv6地址和接口标识符"></a>IPv6地址和接口标识符</h2><p>IPv6特点：</p>
+<ul>
+<li>一个IPv6地址范围指其可用的网络规模</li>
+<li>节点本地(只用于同一计算机通信)</li>
+<li>链路本地(只用于同一网络链路或IPv6前缀中的结点)</li>
+<li>全球性(Internet范围)</li>
+<li>IPv6中，大部分节点通常在同一网络接口上使用多个地址</li>
+<li>一个IPv6节点需要一组地址，包括组播地址</li>
+</ul>
+<p>链路本地IPv6地址使用接口标识符(IID)作为一个单播IPv6地址的分配基础。</p>
+<p>IID的长度通常为64位，并直接由一个网络接口相关的链路层MAC地址形成，该地址使用修改的EUI-64格式或由其他进程随机提供的值形成，以提供可防范地址跟踪的某种程度的隐私保护。</p>
+<p>EUI表示扩展唯一标识符</p>
+<p>EUI-64标识符由一个24位的组织唯一标识符(OUI)+组织分配的40位可扩展标识符组成，并由前24位识别。</p>
+<p>OUI由IEEE注册权威机构维护并分配。长度为24位，并占据EUI-48和EUI-64地址的前3个字节。该地址的第一个字节的低两位分别为u位和g位。当u位被设置时，表示该地址是本地管理，当g位被设置时，表示该地址是一组或组播类型的地址。</p>
+<p>EUI-64计算方法：</p>
+<ul>
+<li>由EUI-48地址形成</li>
+<li>将EUI-48地址的24位OUI复制到EUI-64地址</li>
+<li>EUI-64地址的4，5字节的16位替换为FFFE</li>
+<li>复制由组织分配的剩余位</li>
+</ul>
+<p>修改的EUI-64用于形成IPv6地址的IID，但需要对u位取反。</p>
+<p>链路本地IPv6地址计算方法：</p>
+<ol>
+<li><p>查看接口MAC地址：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">eth0      Link encap:Ethernet  HWaddr 00:50:56:9d:a3:b4  </span><br><span class="line">          inet addr:10.160.14.61  Bcast:10.160.14.255  Mask:255.255.255.0</span><br><span class="line">          inet6 addr: fe80::250:56ff:fe9d:a3b4/64 Scope:Link</span><br><span class="line">          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</span><br><span class="line">          RX packets:147710806 errors:2 dropped:3659 overruns:0 frame:0</span><br><span class="line">          TX packets:158983119 errors:0 dropped:0 overruns:0 carrier:0</span><br><span class="line">          collisions:0 txqueuelen:1000 </span><br><span class="line">          RX bytes:9252586604 (9.2 GB)  TX bytes:35110783086 (35.1 GB)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>变换为EUI-64，MAC地址前三节不变，第4，5节插入fffe(固定的)，并复制剩余位</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">00:50:56:ff:fe:9d:a3:b4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>u位取反（第一节内容：0000 0000，后两位分别为0）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">0000 0000:50:56:ff:fe:9d:a3:b4</span><br><span class="line">u位取反：</span><br><span class="line">0000 0010:50:56:ff:fe:9d:a3:b4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>形成的IID为：02:50:56:ff:fe:9d:a3:b4</p>
+</li>
+<li><p>使用保留的链路本地前缀fe80:&#x2F;10，形成完整地址，&#x2F;64为标准长度，用于一个IPv6地址中识别子网&#x2F;主机部分：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">fe80:250:56ff:fe9d:a3b4</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="CIDR和聚合"><a href="#CIDR和聚合" class="headerlink" title="CIDR和聚合"></a>CIDR和聚合</h2><h3 id="前缀"><a href="#前缀" class="headerlink" title="前缀"></a>前缀</h3><p>无类别域间路由(CIDR)</p>
+<h2 id="单播-多播-广播地址"><a href="#单播-多播-广播地址" class="headerlink" title="单播&#x2F;多播&#x2F;广播地址"></a>单播&#x2F;多播&#x2F;广播地址</h2><h3 id="单播-Unicast"><a href="#单播-Unicast" class="headerlink" title="单播(Unicast)"></a>单播(Unicast)</h3><ul>
+<li>通信：一对一，源或目的地址</li>
+<li>因特网上的所有系统必须至少有一个唯一的单播地址</li>
+<li>可以为A、B或C类</li>
+</ul>
+<h3 id="多播-Multicast"><a href="#多播-Multicast" class="headerlink" title="多播(Multicast)"></a>多播(Multicast)</h3><ul>
+<li>通信：一对多，目的地址</li>
+<li>因特网上的系统可以由一个或多个多播地址</li>
+<li>只能是D类，本地级(本IP网络内的一组通信节点)或全局级</li>
+</ul>
+<h3 id="广播-Broadcast"><a href="#广播-Broadcast" class="headerlink" title="广播(Broadcast)"></a>广播(Broadcast)</h3><ul>
+<li>通信：一对所有，目的地址</li>
+<li>受限广播或直接广播，本地级</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>地址范围</th>
+<th>高序位</th>
+<th>用途</th>
+<th>百分比</th>
+<th>网络数</th>
+<th>主机数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>0.0.0.0-127.255.255.255</td>
+<td>0</td>
+<td>单播&#x2F;特殊</td>
+<td>1&#x2F;2</td>
+<td>128（126）</td>
+<td>1677216</td>
+</tr>
+<tr>
+<td>B</td>
+<td>128.0.0.0-191.255.255.255</td>
+<td>10</td>
+<td>单播&#x2F;特殊</td>
+<td>1&#x2F;4</td>
+<td>16384</td>
+<td>65536</td>
+</tr>
+<tr>
+<td>C</td>
+<td>192.0.0.0-223.255.255.255</td>
+<td>110</td>
+<td>单播&#x2F;特殊</td>
+<td>1&#x2F;8</td>
+<td>2097152</td>
+<td>256</td>
+</tr>
+<tr>
+<td>D</td>
+<td>224.0.0.0-239.255.255.255</td>
+<td>1110</td>
+<td>组播</td>
+<td>1&#x2F;16</td>
+<td>N&#x2F;A</td>
+<td>N&#x2F;A</td>
+</tr>
+<tr>
+<td>E</td>
+<td>240.0.0.0-255.255.255.255</td>
+<td>1111</td>
+<td>保留</td>
+<td>1&#x2F;16</td>
+<td>N&#x2F;A</td>
+<td>N&#x2F;A</td>
+</tr>
+</tbody></table>
+<h2 id="专用网"><a href="#专用网" class="headerlink" title="专用网"></a>专用网</h2><ul>
+<li><p>不需接入Internet，但需要用TCP&#x2F;IP通信</p>
+</li>
+<li><p>编址方案</p>
+<p>​    申请，并使用A、B、C类地址(全局唯一)</p>
+<p>​    不申请，直接使用A、B、C类地址(本组织唯一，全局不唯一)</p>
+<p>​    不申请，直接使用专用地址(本组织唯一，全局不唯一)</p>
+</li>
+<li><p>专用地址(私有地址)</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>私有地址</th>
+<th>总数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>10.0.0.0-10.255.255.255</td>
+<td>1 x A</td>
+</tr>
+<tr>
+<td>B</td>
+<td>172.16.0.0-172.31.255.255</td>
+<td>16 x B</td>
+</tr>
+<tr>
+<td>C</td>
+<td>192.168.0.0-192.168.255.255</td>
+<td>256 x C</td>
+</tr>
+</tbody></table>
+<h2 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h2><p>网络号：IP地址的一个组成部分</p>
+<p>网络地址：一个IP地址</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">tsung</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://tsung1992.github.io/network/Internet%E5%9C%B0%E5%9D%80%E7%BB%93%E6%9E%84/">http://tsung1992.github.io/network/Internet%E5%9C%B0%E5%9D%80%E7%BB%93%E6%9E%84/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://tsung1992.github.io" target="_blank">小虫子O o o</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/images/v2-61ea1ce06d98c376146d9f4afa644abd_1440w.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/http/JWT/"><img class="prev-cover" data-lazy-src="/images/6fd5027da6f7f2f5d7e5db2989b2ceae.jpeg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">JSON WEB TOKEN</div></div></a></div><div class="next-post pull-right"><a href="/network/Internet%E6%8E%A7%E5%88%B6%E6%8A%A5%E6%96%87%E5%8D%8F%E8%AE%AE/"><img class="next-cover" data-lazy-src="/images/20200826222744.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Internet控制报文协议</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By tsung</div><div class="framework-info"><span>框架 </span><a href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/search/local-search.js"></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script><div class="js-pjax"></div><script defer="defer" id="ribbon_piao" mobile="false" src="/js/third-party/piao.js"></script><script src="/js/third-party/click_heart.js" async="async"></script></div></body></html>

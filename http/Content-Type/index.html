@@ -1,0 +1,158 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Content-type属性 | 小虫子O o o</title><meta name="description" content="什么是content-typeContent-type首部字段说明了实体主体的MIME类型。 content-type(MediaType)，即Internet Media Type，互联网媒体类型，也称为MIME类型。在互联网中有成百上千中不同的数据类型，HTTP在传输数据对象时会为他们打上称为MIME的数据格式标签，用于区分数据类型。 Content-Type是HTTP的实体首部字段，用来表示"><meta name="keywords" content="http"><meta name="author" content="tsung"><meta name="copyright" content="tsung"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="http://tsung1992.github.io/http/Content-Type/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><meta property="og:type" content="article"><meta property="og:title" content="Content-type属性"><meta property="og:url" content="http://tsung1992.github.io/http/Content-Type/"><meta property="og:site_name" content="小虫子O o o"><meta property="og:description" content="什么是content-typeContent-type首部字段说明了实体主体的MIME类型。 content-type(MediaType)，即Internet Media Type，互联网媒体类型，也称为MIME类型。在互联网中有成百上千中不同的数据类型，HTTP在传输数据对象时会为他们打上称为MIME的数据格式标签，用于区分数据类型。 Content-Type是HTTP的实体首部字段，用来表示"><meta property="og:image" content="/images/7c03e22195a2c5f4c92feb762677afd6.jpg"><meta property="article:published_time" content="2020-08-16T16:00:00.000Z"><meta property="article:modified_time" content="2025-07-19T13:45:57.654Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '8.1.1',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: {"limitCount":50,"languages":{"author":"作者: tsung","link":"链接: ","source":"来源: 小虫子O o o","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2025-07-19 21:45:57'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="小虫子O o o" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">17</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">9</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFcontent-type"><span class="toc-number">1.</span> <span class="toc-text">什么是content-type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conten-type%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">Conten-type格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84Content-type%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.</span> <span class="toc-text">常见的Content-type类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A5text%E5%BC%80%E5%A4%B4%E7%9A%84%E5%AA%92%E4%BD%93%E6%A0%BC%E5%BC%8F%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.1.</span> <span class="toc-text">以text开头的媒体格式类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A5image%E5%BC%80%E5%A4%B4%E7%9A%84%E5%AA%92%E4%BD%93%E6%A0%BC%E5%BC%8F%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.2.</span> <span class="toc-text">以image开头的媒体格式类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A5application%E5%BC%80%E5%A4%B4%E7%9A%84%E5%AA%92%E4%BD%93%E6%A0%BC%E5%BC%8F%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.3.</span> <span class="toc-text">以application开头的媒体格式类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.</span> <span class="toc-text">常见类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#application-x-www-form-urlencoded"><span class="toc-number">4.1.</span> <span class="toc-text">application&#x2F;x-www-form-urlencoded</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#multipart-form-data"><span class="toc-number">4.2.</span> <span class="toc-text">multipart&#x2F;form-data</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#enctype%E5%B1%9E%E6%80%A7"><span class="toc-number">4.2.1.</span> <span class="toc-text">enctype属性:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#application-json"><span class="toc-number">4.3.</span> <span class="toc-text">application&#x2F;json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#text-xml"><span class="toc-number">4.4.</span> <span class="toc-text">text&#x2F;xml</span></a></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(/images/7c03e22195a2c5f4c92feb762677afd6.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">小虫子O o o</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">Content-type属性</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-08-16T16:00:00.000Z" title="发表于 2020-08-17 00:00:00">2020-08-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-07-19T13:45:57.654Z" title="更新于 2025-07-19 21:45:57">2025-07-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/HTTP/">HTTP</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h2 id="什么是content-type"><a href="#什么是content-type" class="headerlink" title="什么是content-type"></a>什么是content-type</h2><p>Content-type首部字段说明了实体主体的MIME类型。</p>
+<p>content-type(MediaType)，即Internet Media Type，互联网媒体类型，也称为MIME类型。在互联网中有成百上千中不同的数据类型，HTTP在传输数据对象时会为他们打上称为MIME的数据格式标签，用于区分数据类型。</p>
+<p>Content-Type是HTTP的实体首部字段，用来表示请求或响应中的媒体类型。它用来告诉服务端如何处理请求的数据，以及告诉客户端（一般是浏览器）如何解析响应的数据，比如显示图片，解析并展示html等等</p>
+<h2 id="Conten-type格式"><a href="#Conten-type格式" class="headerlink" title="Conten-type格式"></a>Conten-type格式</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Content-type：type/subtype；parameter</span><br><span class="line"> 	- type：主类型，任意的字符串，人text，如果是*号代表所有</span><br><span class="line"> 	- subtype：子类型，任意的字符串，如html，如果是*号代表所有，用“/”与主类型隔开</span><br><span class="line"> 	- parameter：可选参数，如charset，boundary等</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<p>Content-type: text&#x2F;html</p>
+<p>Content-type: application&#x2F;json; charset:utf-8</p>
+<h2 id="常见的Content-type类型"><a href="#常见的Content-type类型" class="headerlink" title="常见的Content-type类型"></a>常见的Content-type类型</h2><h3 id="以text开头的媒体格式类型"><a href="#以text开头的媒体格式类型" class="headerlink" title="以text开头的媒体格式类型"></a>以text开头的媒体格式类型</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">text/html:HTML格式</span><br><span class="line">text/plain：纯文本格式</span><br><span class="line">test/xml：XML格式  (什么是XML？指可扩展标记语言（eXtensible Markup Language），被设计用来传输和存储数据</span><br></pre></td></tr></table></figure>
+
+<h3 id="以image开头的媒体格式类型"><a href="#以image开头的媒体格式类型" class="headerlink" title="以image开头的媒体格式类型"></a>以image开头的媒体格式类型</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">image/gif：gif图片格式</span><br><span class="line">image/jpeg：jpg图片格式</span><br><span class="line">image/png：png图片类型</span><br></pre></td></tr></table></figure>
+
+<h3 id="以application开头的媒体格式类型"><a href="#以application开头的媒体格式类型" class="headerlink" title="以application开头的媒体格式类型"></a>以application开头的媒体格式类型</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">application/xhtml+xml: XHTML格式</span><br><span class="line">application/xml：XML数据格式</span><br><span class="line">application/atom+xml：Atom XML聚合格式</span><br><span class="line">application/json：JSON数据格式</span><br><span class="line">application/pdf：pdf格式</span><br><span class="line">application/octet-stream：二进制流数据(如常见的文件下载)</span><br><span class="line">application/x-www-form-urlencoded：&lt;form encType=””&gt;中默认的encType，form表单数据被编码为key/value格式发送到服务器（表单默认的提交数据的格式）。</span><br><span class="line"></span><br><span class="line">另外还有一种常见的媒体格式是上传文件之时使用的：</span><br><span class="line">multipart/form-data ： 需要在表单中进行文件上传时，就需要使用该格式。</span><br></pre></td></tr></table></figure>
+
+<h2 id="常见类型"><a href="#常见类型" class="headerlink" title="常见类型"></a>常见类型</h2><h3 id="application-x-www-form-urlencoded"><a href="#application-x-www-form-urlencoded" class="headerlink" title="application&#x2F;x-www-form-urlencoded"></a>application&#x2F;x-www-form-urlencoded</h3><p>(1) 浏览器的原生form表单</p>
+<p>(2) 提交的数据按照key1&#x3D;val1&amp;key2&#x3D;val2的方式进行编码，key和val都进行URL转码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">POST /dvwa/login.php HTTP1.1</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Origin: http://10.160.15.105</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span><br><span class="line"></span><br><span class="line">Login=Login&amp;password=admin&amp;username=admin</span><br></pre></td></tr></table></figure>
+
+<h3 id="multipart-form-data"><a href="#multipart-form-data" class="headerlink" title="multipart&#x2F;form-data"></a>multipart&#x2F;form-data</h3><p>常见的post数据提交的方式，使用表单上传文件时，必须让form的enctype等于该值。</p>
+<h4 id="enctype属性"><a href="#enctype属性" class="headerlink" title="enctype属性:"></a>enctype属性:</h4><p>enctype：规定了form表单在发送到服务器时候编码方式，它有如下的三个值。</p>
+<ol>
+<li>application&#x2F;x-www-form-urlencoded：默认的编码方式。但是在用文本的传输和MP3等大型文件的时候，使用这种编码就显得效率低下。</li>
+<li>multipart&#x2F;form-data：指定传输数据为二进制类型，比如图片、mp3、文件。</li>
+<li>text&#x2F;plain：纯文体的传输。空格转换为 “+” 加号，但不对特殊字符编码。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&lt;form enctype=&quot;multipart/form-data&quot; action=&quot;#&quot; method=&quot;POST&quot; /&gt;</span><br><span class="line">	&lt;input type=&quot;hidden&quot; name=&quot;MAX_FILE_SIZE&quot; value=&quot;100000&quot; /&gt;</span><br><span class="line">	Choose an image to upload:</span><br><span class="line">	&lt;br/&gt;</span><br><span class="line">	&lt;input name=&quot;uploaded&quot; type=&quot;file&quot; /&gt;&lt;br /&gt;</span><br><span class="line">	&lt;br/&gt;</span><br><span class="line">	&lt;input type=&quot;submit&quot; name=&quot;Upload&quot; value=&quot;Upload&quot; /&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p>请求头示例：（以下为上传xml文件）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">POST /dvwa/vulnerabilities/upload/ HTTP/1.1</span><br><span class="line">Host: 1.1.1.1</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Content-Length: 1311</span><br><span class="line">Cache-Control: max-age=0</span><br><span class="line">Origin: http://1.1.1.1</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">DNT: 1</span><br><span class="line">Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryhrzKECyteqHqat1e</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span><br><span class="line">Referer: http://1.1.1.1/dvwa/vulnerabilities/upload/</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Cookie: security=low;acopendivids=swingset,jotto,phpbb2,redmine; acgroupswithpersist=nada; PHPSESSID=ij584g37d4f14n6gv872mth7b0; x-s3-sid=&gt;rn`yh6vsgm0dhtp/R1e3v30y; x-s3-rtk=Tr20uent76gJdi1hwE6szylhW524o49eUR4439; x-s3-tid=9c3321c9b97c96f78e8bda2351ef7f34c7250918:ylhW52_Pe3B:190a1755-e092-11ea-8767-5d01a268a33a:ae97f50468</span><br><span class="line"></span><br><span class="line">------WebKitFormBoundaryhrzKECyteqHqat1e</span><br><span class="line">Content-Disposition: form-data; name=&quot;MAX_FILE_SIZE&quot;</span><br><span class="line"></span><br><span class="line">100000</span><br><span class="line">------WebKitFormBoundaryhrzKECyteqHqat1e</span><br><span class="line">Content-Disposition: form-data; name=&quot;uploaded&quot;; filename=&quot;test.xml&quot;</span><br><span class="line">Content-Type: text/xml</span><br><span class="line"></span><br><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;XMLReport name=&quot;test&quot; xml_export_version=&quot;1.0&quot;&gt;</span><br><span class="line">   &lt;summary&gt;</span><br><span class="line">      &lt;url&gt;http://www.baidu.com/&lt;/url&gt;</span><br><span class="line">      &lt;server_type&gt;None&lt;/server_type&gt;</span><br><span class="line">      &lt;scan_mode&gt;0&lt;/scan_mode&gt;</span><br><span class="line">      &lt;profile_name&gt;...........................&lt;/profile_name&gt;</span><br><span class="line">      &lt;time&gt;</span><br><span class="line">         &lt;scan_begin&gt;2019/04/10 01:39:52&lt;/scan_begin&gt;</span><br><span class="line">         &lt;scan_end&gt;2019/04/10 01:40:23&lt;/scan_end&gt;</span><br><span class="line">         &lt;scan_duration&gt;31s&lt;/scan_duration&gt;</span><br><span class="line">      &lt;/time&gt;</span><br><span class="line">      &lt;total_urls/&gt;</span><br><span class="line">      &lt;total_vulns&gt;</span><br><span class="line">         &lt;total_serious_vulns&gt;0&lt;/total_serious_vulns&gt;</span><br><span class="line">         &lt;total_high_vulns&gt;0&lt;/total_high_vulns&gt;</span><br><span class="line">         &lt;total_medium_vulns&gt;0&lt;/total_medium_vulns&gt;</span><br><span class="line">         &lt;total_low_vulns&gt;0&lt;/total_low_vulns&gt;</span><br><span class="line">      &lt;/total_vulns&gt;</span><br><span class="line">   &lt;/summary&gt;</span><br><span class="line">   &lt;vuln_items/&gt;</span><br><span class="line">   &lt;server_information&gt;</span><br><span class="line">      &lt;host&gt;http://www.baidu.com/&lt;/host&gt;</span><br><span class="line">      &lt;server_type/&gt;</span><br><span class="line">      &lt;total_urls num=&quot;0&quot;/&gt;</span><br><span class="line">      &lt;external_urls num=&quot;0&quot;/&gt;</span><br><span class="line">   &lt;/server_information&gt;</span><br><span class="line">&lt;/XMLReport&gt;</span><br><span class="line"></span><br><span class="line">------WebKitFormBoundaryhrzKECyteqHqat1e</span><br><span class="line">Content-Disposition: form-data; name=&quot;Upload&quot;</span><br><span class="line"></span><br><span class="line">Upload</span><br><span class="line">------WebKitFormBoundaryhrzKECyteqHqat1e--</span><br></pre></td></tr></table></figure>
+
+<p>首先生成了一个 boundary 用于分割不同的字段，为了避免与正文内容重复，boundary 很长很复杂。<br>然后 Content-Type 里指明了数据是以 multipart&#x2F;form-data 来编码，本次请求的 boundary 是什么内容。</p>
+<p>消息主体里按照字段个数又分为多个结构类似的部分，<strong>每部分都是以 –boundary 开始，紧接着是内容描述信息，然后是回车，最后是字段具体内容（文本或二进制）。</strong></p>
+<p>如果传输的是文件，还要包含文件名和文件类型信息。消息主体最后以 –boundary– 标示结束。</p>
+<p><strong>application&#x2F;x-www-form-urlencoded： 窗体数据被编码为名称&#x2F;值对</strong>。这是标准的编码格式。</p>
+<p><strong>multipart&#x2F;form-data： 窗体数据被编码为一条消息，页上的每个控件对应消息中的一个部分</strong>。 </p>
+<p><strong>text&#x2F;plain： 窗体数据以纯文本形式进行编码，其中不含任何控件或格式字符。</strong></p>
+<blockquote>
+<p>form 的enctype属性为编码方式，常用有两种：</p>
+<p>application&#x2F;x-www-form-urlencoded和multipart&#x2F;form- data，默认为application&#x2F;x-www-form-urlencoded。 </p>
+<p>当action为get时候，浏览器用x-www-form-urlencoded的编码方式把form数据转换成一个字串（name1&#x3D;value1&amp; amp;name2&#x3D;value2…），然后把这个字串append到url后面，用?分割，加载这个新的url。</p>
+<p> 当action为post时候，浏览器把form数据封装到http body中，然后发送到server。 </p>
+<p>如果没有type&#x3D;file的控件，用默认的application&#x2F;x-www-form-urlencoded就可以了。 但是如果有type&#x3D;file的话，就要用到multipart&#x2F;form-data了。浏览器会把整个表单以控件为单位分割，并为每个部分加上 Content-Disposition(form-data或者file),Content-Type(默认为text&#x2F;plain),name(控件 name)等信息，并加上分割符(boundary)。</p>
+</blockquote>
+<h3 id="application-json"><a href="#application-json" class="headerlink" title="application&#x2F;json"></a>application&#x2F;json</h3><p>消息主体是序列化后的JSON字符串</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">POST / HTTP/1.1  </span><br><span class="line">Content-Type: application/json;charset=utf-8  </span><br><span class="line"></span><br><span class="line">&#123;&quot;title&quot;:&quot;test&quot;,&quot;sub&quot;:[1,2,3]&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="text-xml"><a href="#text-xml" class="headerlink" title="text&#x2F;xml"></a>text&#x2F;xml</h3><p>一种使用http作为传输协议，XML作为编码方式的远程调用规范</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">POST [http://www.example.com](http://www.example.com) HTTP/1.1 </span><br><span class="line">Content-Type: text/xml </span><br><span class="line">&lt;!--?xml version=&quot;1.0&quot;?--&gt; </span><br><span class="line">&lt;methodcall&gt; </span><br><span class="line">    &lt;methodname&gt;examples.getStateName&lt;/methodname&gt; </span><br><span class="line">    &lt;params&gt; </span><br><span class="line">        &lt;param&gt; </span><br><span class="line">            &lt;value&gt;&lt;i4&gt;41&lt;/i4&gt;&lt;/value&gt; </span><br><span class="line">        &lt;/param&gt;</span><br><span class="line">    &lt;/params&gt; </span><br><span class="line">&lt;/methodcall&gt; </span><br></pre></td></tr></table></figure>
+
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">tsung</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://tsung1992.github.io/http/Content-Type/">http://tsung1992.github.io/http/Content-Type/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://tsung1992.github.io" target="_blank">小虫子O o o</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/http/">http</a></div><div class="post_share"><div class="social-share" data-image="/images/7c03e22195a2c5f4c92feb762677afd6.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/docker/docker%E9%95%9C%E5%83%8F%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"><img class="prev-cover" data-lazy-src="/images/timg.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">docker 镜像基本操作</div></div></a></div><div class="next-post pull-right"><a href="/docker/docker%E9%95%9C%E5%83%8F/"><img class="next-cover" data-lazy-src="/images/224800jjgsufley6jrc1zp.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">docker镜像</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By tsung</div><div class="framework-info"><span>框架 </span><a href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/search/local-search.js"></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script><div class="js-pjax"></div><script defer="defer" id="ribbon_piao" mobile="false" src="/js/third-party/piao.js"></script><script src="/js/third-party/click_heart.js" async="async"></script></div></body></html>

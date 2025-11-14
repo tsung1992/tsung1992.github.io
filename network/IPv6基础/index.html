@@ -1,0 +1,231 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>IPv6基础 | 小虫子O o o</title><meta name="description" content="IPv6基础IPv6特点 128bits的地址方案，提供了巨大的IP地址空间  多等级层次有助于路由聚合，提高了因特网网络路由的效率及可扩展性  IPv6可提供远大于IPv4的网络前缀，同一组织机构在其网络中可以只使用一个前缀，这样ISP可以把所有客户聚合形成一个前缀并发布出去。分层聚合使全局路由表项数量很少，转发效率更高。   自动配置过程允许IPv6网络中的节点更加便捷的接入IPv6网络【实现"><meta name="author" content="tsung"><meta name="copyright" content="tsung"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="http://tsung1992.github.io/network/IPv6%E5%9F%BA%E7%A1%80/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><meta property="og:type" content="article"><meta property="og:title" content="IPv6基础"><meta property="og:url" content="http://tsung1992.github.io/network/IPv6%E5%9F%BA%E7%A1%80/"><meta property="og:site_name" content="小虫子O o o"><meta property="og:description" content="IPv6基础IPv6特点 128bits的地址方案，提供了巨大的IP地址空间  多等级层次有助于路由聚合，提高了因特网网络路由的效率及可扩展性  IPv6可提供远大于IPv4的网络前缀，同一组织机构在其网络中可以只使用一个前缀，这样ISP可以把所有客户聚合形成一个前缀并发布出去。分层聚合使全局路由表项数量很少，转发效率更高。   自动配置过程允许IPv6网络中的节点更加便捷的接入IPv6网络【实现"><meta property="og:image" content="/images/2.jpg"><meta property="article:published_time" content="2020-08-31T16:00:00.000Z"><meta property="article:modified_time" content="2025-07-19T13:45:57.716Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '8.1.1',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: {"limitCount":50,"languages":{"author":"作者: tsung","link":"链接: ","source":"来源: 小虫子O o o","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2025-07-19 21:45:57'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="小虫子O o o" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">17</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">9</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#IPv6%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">IPv6基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IPv6%E7%89%B9%E7%82%B9"><span class="toc-number">1.1.</span> <span class="toc-text">IPv6特点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPv%E5%9C%B0%E5%9D%80%E8%A1%A8%E7%A4%BA"><span class="toc-number">2.</span> <span class="toc-text">IPv地址表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IPv6%E5%9C%B0%E5%9D%80%E7%AE%80%E5%86%99"><span class="toc-number">2.1.</span> <span class="toc-text">IPv6地址简写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IPv6%E5%9C%B0%E5%9D%80%E7%BB%93%E6%9E%84"><span class="toc-number">2.2.</span> <span class="toc-text">IPv6地址结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPv6%E6%8A%A5%E5%A4%B4"><span class="toc-number">3.</span> <span class="toc-text">IPv6报头</span></a></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(/images/2.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">小虫子O o o</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">IPv6基础</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-08-31T16:00:00.000Z" title="发表于 2020-09-01 00:00:00">2020-09-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-07-19T13:45:57.716Z" title="更新于 2025-07-19 21:45:57">2025-07-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/TCP-IP%E8%AF%A6%E8%A7%A3/">TCP-IP详解</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h2 id="IPv6基础"><a href="#IPv6基础" class="headerlink" title="IPv6基础"></a>IPv6基础</h2><h3 id="IPv6特点"><a href="#IPv6特点" class="headerlink" title="IPv6特点"></a>IPv6特点</h3><ul>
+<li><p>128bits的地址方案，提供了巨大的IP地址空间</p>
+</li>
+<li><p>多等级层次有助于路由聚合，提高了因特网网络路由的效率及可扩展性</p>
+<blockquote>
+<p>IPv6可提供远大于IPv4的网络前缀，同一组织机构在其网络中可以只使用一个前缀，这样ISP可以把所有客户聚合形成一个前缀并发布出去。分层聚合使全局路由表项数量很少，转发效率更高。</p>
+</blockquote>
+</li>
+<li><p>自动配置过程允许IPv6网络中的节点更加便捷的接入IPv6网络【实现了即插即用的联网方式】</p>
+</li>
+<li><p>重新编制机制使得IPv6提供商之间的转换对最终用户是透明的</p>
+</li>
+<li><p>不再有广播、不再有ARP，利用ICMPv6替代ARP</p>
+</li>
+<li><p>IPv6的包头比IPv4更加有效率，数据字段更少，去掉了包头校验和。</p>
+</li>
+</ul>
+<h2 id="IPv地址表示"><a href="#IPv地址表示" class="headerlink" title="IPv地址表示"></a>IPv地址表示</h2><p>IPv6地址共128位，使用十六进制进行表示，分为8段，中间用”:”隔开。</p>
+<p>如：2001:0000:3238:00E1:0063:0000:0000:FEFB</p>
+<h3 id="IPv6地址简写"><a href="#IPv6地址简写" class="headerlink" title="IPv6地址简写"></a>IPv6地址简写</h3><p>以2001:0410:0000:0001:0000:0000:0000:45ff为例：</p>
+<ul>
+<li><p>每段的前导0可以省略，但至少保留1个0</p>
+<blockquote>
+<p>2001:410:0:1:0:0:0:45ff</p>
+</blockquote>
+</li>
+<li><p>连续多个0可以缩写为”::”，但只能使用一次</p>
+<blockquote>
+<p>2001:410:0:1::45ff</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="IPv6地址结构"><a href="#IPv6地址结构" class="headerlink" title="IPv6地址结构"></a>IPv6地址结构</h3><p>IPv6地址分为两部分：前缀及接口ID</p>
+<p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200829212643856.png" alt="image-20200829212643856"></p>
+<p>接口标识生成方法：</p>
+<ul>
+<li><p>手工配置</p>
+</li>
+<li><p>系统通过软件自动生成</p>
+</li>
+<li><p>IEEE EUI-64规范自动生成</p>
+<blockquote>
+<p>将MAC地址转换为接口ID</p>
+<p>MAC地址的独特性保证了接口ID的独特性</p>
+<p>设备自动生成，不需认为干预</p>
+</blockquote>
+</li>
+</ul>
+<p>如下：将MAC地址为00-E0-4C-68-10-18，通过EUI-64自动生成IPv6的接口ID。</p>
+<ul>
+<li><p>步骤1：在MAC地址的高24位厂商ID和低24位厂商编号ID之间插入两个字节FFFE</p>
+</li>
+<li><p>步骤2：将U&#x2F;L位取反，此处0置为1</p>
+<blockquote>
+<p>U&#x2F;L 位是第一个字节的第七位，用于确定该地址是全球管理还是本地管理。如果为0就为全球管理，表示全球唯一地址；为1就为本地管理，表示本地唯一地址，是网络管理员为了加强自己对网络管理而指定的地址</p>
+</blockquote>
+</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="http://upimg.ruijie.com.cn/Editor/Image/20181227174445/2.png" alt="img"></p>
+<h2 id="IPv6报头"><a href="#IPv6报头" class="headerlink" title="IPv6报头"></a>IPv6报头</h2><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200829111436585.png" alt="image-20200829111436585"></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>长度</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>version</td>
+<td>4bit</td>
+<td>6：表示IPv6</td>
+</tr>
+<tr>
+<td>traffic class</td>
+<td>8bit</td>
+<td>流量类型，该字段及其功能类似于IPv4业务类型字段。该字段以区分业务编码点（DSCP）标记一个IPv6数据包，以此指明数据包应当如何处理。</td>
+</tr>
+<tr>
+<td>flow label</td>
+<td>20bit</td>
+<td>流标签。该字段用来表示IP数据包的一个流，</td>
+</tr>
+<tr>
+<td>payload length</td>
+<td>16bit</td>
+<td>该字段表示有效载荷的长度、有效载荷是指紧跟在IPv6基本报头的数据包，包含IPv6扩展报头</td>
+</tr>
+<tr>
+<td>next header</td>
+<td>8bit</td>
+<td>下一报头，该字段指明了跟随在IPv6基本报头后的扩展报头的信息类型</td>
+</tr>
+<tr>
+<td>Hop limit</td>
+<td>8bit</td>
+<td>跳数限制，该字段定义了IPv6数据包所能经过的最大跳数，这个字段和IPv4中的TTL字段非常相似。</td>
+</tr>
+<tr>
+<td>Source address</td>
+<td>128bit</td>
+<td>该字段表示该报文的原地址</td>
+</tr>
+<tr>
+<td>Destination address</td>
+<td>128bit</td>
+<td>该字段表示该报文的目的地址</td>
+</tr>
+<tr>
+<td>extension headers</td>
+<td>可变</td>
+<td>扩展报头。IPv6取消了IPv4报头中的选项字段，并引入了多种扩展报文头，在提高处理效率的同时还增强了IPv6的灵活性，为IP协议提供了良好的扩展能力。当超过一种扩展报头被用在同一个分组里时，报头必须按照下列顺序出现：<br>- IPv6基本报头<br>- 逐跳选项扩展报头<br>- 目的选项扩展报头<br>- 路由扩展报头<br>- 分片扩展报头<br>- 授权扩展报头<br>- 封装安全有效载荷扩展报头<br>- 目的选项扩展报头(指那些将被分组报文的最终目的地处理的选项)<br>- 上层扩展报头<br>不是所有的扩展报头都需要被转发路由设备查看和处理的。路由设备转发时根据基本报头中Next Header值来决定是否要处理扩展头。<br>除了目的选项扩展报头出现两次（一次在路由扩展报头之前，另一次在上层扩展报头之前），其余扩展报头只出现一次。</td>
+</tr>
+</tbody></table>
+<p>一个IPv6数据包可能包括0个或多个扩展包头，当使用多个扩展包头时，通过前面的包头的Next head字段指明该扩展包头后的扩展包头。有了扩展包头，中间路由器就不需要处理每一个可能出现的选项，提高了路由器处理数据包的速度，提高了其转发性能。在扩展报头链的最后就是有效负载。</p>
+<p>扩展报头是可选的，只有需要该扩展报头对应的功能，发送主机才会添加相应扩展报头</p>
+<p><img src= "/img/loading.gif" data-lazy-src="http://www.what21.com/sys/Data/Image/201809/1536653570431040156.jpg" alt="IPv6地址特点、优势及报文内容2.jpg"></p>
+<p><strong>与IPv4报头相比，IPv6报头结构的提升：</strong> </p>
+<ul>
+<li>基本的IPv4报头长度为20个字节，基本的IPv6报头长度为40个字节；</li>
+<li>由于2层与4层的校验已经足够健壮，取消了IP的三层校验；</li>
+<li>取消中间节点的分片功能，分片重组功能由源端实现，通过Path MTU机制来发现路径MTU。即，源节点在正式发送数据之前，使用ICMPv6来检测路径上最小的MTU；</li>
+<li>增加流标签，提高QoS效率。</li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">tsung</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://tsung1992.github.io/network/IPv6%E5%9F%BA%E7%A1%80/">http://tsung1992.github.io/network/IPv6%E5%9F%BA%E7%A1%80/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://tsung1992.github.io" target="_blank">小虫子O o o</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/images/2.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/SQL/sqli-labs%E4%BD%BF%E7%94%A8/"><img class="prev-cover" data-lazy-src="/images/u=3863419340,252059394&amp;fm=26&amp;gp=0.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">sqli-labs安装</div></div></a></div><div class="next-post pull-right"><a href="/Linux/Linux%E4%B8%8BIP%E5%8F%8ADNS%E9%85%8D%E7%BD%AE/"><img class="next-cover" data-lazy-src="/images/v2-61ea1ce06d98c376146d9f4afa644abd_1440w.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux下IP及DNS配置</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By tsung</div><div class="framework-info"><span>框架 </span><a href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/search/local-search.js"></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script><div class="js-pjax"></div><script defer="defer" id="ribbon_piao" mobile="false" src="/js/third-party/piao.js"></script><script src="/js/third-party/click_heart.js" async="async"></script></div></body></html>

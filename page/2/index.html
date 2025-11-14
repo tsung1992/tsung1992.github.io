@@ -1,0 +1,217 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>小虫子O o o - 生命也许会孤独一阵子，但不会孤独一辈子</title><meta name="description" content="生命也许会孤独一阵子，但不会孤独一辈子"><meta name="author" content="tsung"><meta name="copyright" content="tsung"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="http://tsung1992.github.io/page/2/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><meta property="og:type" content="website"><meta property="og:title" content="小虫子O o o"><meta property="og:url" content="http://tsung1992.github.io/page/2/"><meta property="og:site_name" content="小虫子O o o"><meta property="og:description" content="生命也许会孤独一阵子，但不会孤独一辈子"><meta property="og:image" content="/img/avatar.png"><meta property="article:published_time" content="2025-11-14T14:49:14.036Z"><meta property="article:modified_time" content="2025-11-14T14:49:14.036Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '8.1.1',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: {"limitCount":50,"languages":{"author":"作者: tsung","link":"链接: ","source":"来源: 小虫子O o o","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false,
+  postUpdate: '2025-11-14 22:49:14'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="小虫子O o o" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">17</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">9</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/img/theme.png)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">小虫子O o o</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site_title">小虫子O o o</h1><div id="site_subtitle"><span id="subtitle"></span></div></div><div id="scroll_down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/network/%E7%89%A9%E7%90%86%E5%B1%82&amp;%E9%93%BE%E8%B7%AF%E5%B1%82/" title="物理层及数据链路层">     <img class="post_bg" data-lazy-src="/images/001.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="物理层及数据链路层"></a></div><div class="recent-post-info"><a class="article-title" href="/network/%E7%89%A9%E7%90%86%E5%B1%82&amp;%E9%93%BE%E8%B7%AF%E5%B1%82/" title="物理层及数据链路层">物理层及数据链路层</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-25T16:00:00.000Z" title="发表于 2020-08-26 00:00:00">2020-08-26</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/TCP-IP%E8%AF%A6%E8%A7%A3/">TCP-IP详解</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/TCP-IPv4/">TCP-IPv4</a></span></div><div class="content">物理层物理层的功能不需要地址
+
+Frame 13： 74 bytes on wire (592 bits),74 bytes captured (592 bits)
+13号帧，线路74字节，实际捕获74字节
+Encapsulation type： Ethernet(1)  # 封装类型Arrival Time: # 捕获日期和时间Epoch Time：# 时间戳，另一种时间表示方式[Time delta from previous captured frame: ]   #此包与前一包的时间间隔[Time since reference or first frame: ]       #此包与第一帧的时间间隔Frame Number: # 帧序号Frame Length: # 帧长度Capture Length： # 捕获长度 （通常情况下帧长度和捕获长度是相同的）Protocols in frame：帧内封装的协议层次结构
+
+EtherType 是以太帧里的一个字段，用来指明应用于帧数据字段的协议
+链路层主要目的：
+1. 为IP模块发送和接收IP数据报2. 为ARP模块发送ARP请求 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/network/%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E8%AE%BE%E5%A4%87/" title="网络连接设备">     <img class="post_bg" data-lazy-src="/images/0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网络连接设备"></a></div><div class="recent-post-info"><a class="article-title" href="/network/%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E8%AE%BE%E5%A4%87/" title="网络连接设备">网络连接设备</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-25T16:00:00.000Z" title="发表于 2020-08-26 00:00:00">2020-08-26</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/TCP-IP%E8%AF%A6%E8%A7%A3/">TCP-IP详解</a></span></div><div class="content">转发器&#x2F;集线器仅发生在物理层，完成比特数据在物理层的传输
+作用：实现物理层的连接，对衰减的信号进行放大整形或再生，起到扩展网段距离的作用。
+
+网桥&#x2F;交换机交换机作用于数据链路层和物理层
+交换机是一种用于电信号转发的网络设备。它可以为接入交换机的任意两个网络节点提供独享的电信号通路。
+
+A–D之间的数据交换没有进过网桥，这是因为两者连接在网桥的同一个端点处。
+
+A–G之间的数据交换进过网桥，这是因为两者连接在网桥不同的端点处
+
+
+
+路由器路由器是用来延伸、拓展网络的设备。
+一个接口连接是一个网络，在局域网内部通常使用集线器或交换机扩展网络
+
+网关网关(Gateway)又称网间连接器、协议转换器。网关在传输层上以实现网络互连，是最复杂的网络互连设备，仅用于两个高层协议不同的网络互连。
+网关是一种充当转换重任的计算机系统或设备。在使用不同的通信协议、数据格式或语言,甚至体系结构完全不同的两种系统之间，网关是一个翻译器。与网桥只是简单地传达信息不同，网关对收到的信息要重新打包，以适应目的系统的需求。同时，网关也可以提供过滤和安全功能。大多数网关运行在OSI 7层协议的顶层– ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/network/%E6%A6%82%E8%BF%B0/" title="TCP-IP详解概述">     <img class="post_bg" data-lazy-src="/images/1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TCP-IP详解概述"></a></div><div class="recent-post-info"><a class="article-title" href="/network/%E6%A6%82%E8%BF%B0/" title="TCP-IP详解概述">TCP-IP详解概述</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-25T16:00:00.000Z" title="发表于 2020-08-26 00:00:00">2020-08-26</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/TCP-IP%E8%AF%A6%E8%A7%A3/">TCP-IP详解</a></span></div><div class="content">OSI参考模型
+ISO标准(ISO组织制定)
+​    开放系统互连(open system interconnection)，将不同系统进行互连所构建的模型
+​    参考模型：不是实际的协议，并不是在实际过程汇总进行实用的模型，而是作为参考、知道的模型
+
+目的
+​    使两个不同的系统能够通信，而不需要改变底层的硬件或软件逻辑
+​    不同的系统：一台计算机、一部电话
+
+
+OSI不是协议，是网络体系结构的概念模型
+层次体系结构网络支持层：为通信提供传输的支持
+应用支持层：通常由软件实现的，应用软件，为网络应用提供相应的支持
+传输层：将上下两层结合在一起
+
+对等层通信层次模型在通信过程中是如何使用的。
+A 和 B 通过中间节点进行通信(网络互连设备)
+两个系统之间如何实现通信，其通信方式称为对等层通信。
+对等层概念可通过层次模型进行对应。
+下层：服务提供者
+上层：服务使用者
+接口：层与层之间存在一个接口，为了实现层与层之间服务的提供与使用的通道
+对等层：不同主机之间的相同层次被称为对等层(Peer)。主机A的应用层和主机B的应用层互为对等层、主机A的会话层和主机B的会话层互为对等 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/docker/docker%E9%95%9C%E5%83%8F%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" title="docker 镜像基本操作">     <img class="post_bg" data-lazy-src="/images/timg.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker 镜像基本操作"></a></div><div class="recent-post-info"><a class="article-title" href="/docker/docker%E9%95%9C%E5%83%8F%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" title="docker 镜像基本操作">docker 镜像基本操作</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-19T16:00:00.000Z" title="发表于 2020-08-20 00:00:00">2020-08-20</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/docker/">docker</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/docker/">docker</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/%E5%AE%B9%E5%99%A8/">容器</a></span></div><div class="content">镜像是Docker的三大核心概念中最为重要的。Docker运行容器前需要本地存在对应的镜像，若没有镜像存在与本地，会先从仓库从获取下载。
+获取镜像docker官方提供数十万个镜像供大家下载，包括且不限于常用的ubuntu、apache、nginx、mysql、mongodb等常用的服务器及数据库等。
+
+可使用docker pull命令从镜像源下载镜像。
+docker pull：获取镜像
+# 下载镜像 docker pull 镜像名[:tag]root@ubuntu:~#  docker pull ubuntuUsing default tag: latestlatest: Pulling from library/ubuntu3ff22d22a855: Pull complete e7cb79d19722: Pull complete 323d0d660b6a: Pull complete b7f616834fd0: Pull complete Digest: sha256:5d1d5407f353843ecf8b16524bc5565aa332e9e6a1297c73a92d3e75 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/http/Content-Type/" title="Content-type属性">     <img class="post_bg" data-lazy-src="/images/7c03e22195a2c5f4c92feb762677afd6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Content-type属性"></a></div><div class="recent-post-info"><a class="article-title" href="/http/Content-Type/" title="Content-type属性">Content-type属性</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-16T16:00:00.000Z" title="发表于 2020-08-17 00:00:00">2020-08-17</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/HTTP/">HTTP</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/http/">http</a></span></div><div class="content">什么是content-typeContent-type首部字段说明了实体主体的MIME类型。
+content-type(MediaType)，即Internet Media Type，互联网媒体类型，也称为MIME类型。在互联网中有成百上千中不同的数据类型，HTTP在传输数据对象时会为他们打上称为MIME的数据格式标签，用于区分数据类型。
+Content-Type是HTTP的实体首部字段，用来表示请求或响应中的媒体类型。它用来告诉服务端如何处理请求的数据，以及告诉客户端（一般是浏览器）如何解析响应的数据，比如显示图片，解析并展示html等等
+Conten-type格式Content-type：type/subtype；parameter 	- type：主类型，任意的字符串，人text，如果是*号代表所有 	- subtype：子类型，任意的字符串，如html，如果是*号代表所有，用“/”与主类型隔开 	- parameter：可选参数，如charset，boundary等
+
+例如：
+Content-type: text&#x2F;html
+Content-type: applicat ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/docker/docker%E9%95%9C%E5%83%8F/" title="docker镜像">     <img class="post_bg" data-lazy-src="/images/224800jjgsufley6jrc1zp.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker镜像"></a></div><div class="recent-post-info"><a class="article-title" href="/docker/docker%E9%95%9C%E5%83%8F/" title="docker镜像">docker镜像</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-14T16:00:00.000Z" title="发表于 2020-08-15 00:00:00">2020-08-15</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/docker/">docker</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/docker/">docker</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/%E5%AE%B9%E5%99%A8/">容器</a></span></div><div class="content">什么是镜像
+镜像是一种轻量级、可执行的独立软件包，用来打包软件运行环境和基于运行环境的开发软件，它包含运行某个软件所需的所有内容，包括代码、运行时、库、环境变量和配置文件。
+
+联合文件系统(unionFS)联合文件系统是一种分层、轻量级并且高性能的文件系统。它支持对文件文件系统的修改作为一次提交来层层的叠加，同时可以将不同目录挂载到同一个虚拟文件系统下。
+
+联合文件系统是Docker镜像的基础。镜像可以通过分层来进行继承，基于基础镜像，可以制作各种具体的应用镜像
+
+Docker镜像原理什么是docker镜像一个完整的docker镜像可以支撑一个docker容器的运行，在docker容器运行过程中主要提供文件系统视角。
+
+插话(理解Linux内核和ubuntu镜像的区别)：
+传统虚拟机安装ubuntu包含两部分：
+
+某个Linux内核的发行版本，比如Linux3.8版本的内核
+某个特定的Ubuntu发行版，这部分内容不包含Linux内核，但包含Linux之外的软件管理方式、软件驱动。
+
+
+Docker镜像原理Linux系统
+Linux系统一般有内核、shell、文件系统和应用程序共4部分 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/docker/%E5%88%9D%E8%AF%86docker/" title="初识docker">     <img class="post_bg" data-lazy-src="/images/bg2018020901.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="初识docker"></a></div><div class="recent-post-info"><a class="article-title" href="/docker/%E5%88%9D%E8%AF%86docker/" title="初识docker">初识docker</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-14T16:00:00.000Z" title="发表于 2020-08-15 00:00:00">2020-08-15</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/docker/">docker</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/docker/">docker</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/%E5%AE%B9%E5%99%A8/">容器</a></span></div><div class="content">docker 历史什么是dockerDocker是基于Go语言实现的开源容器项目，诞生于2013年初，最初的发起者是dotCloud公司。
+Docker是个划时代的开源项目，它彻底释放了计算虚拟化的威力，极大提高了应用的维护效率，降低了云计算应用开发的成本。
+Docker的构想是要实现“Build，Ship and Run Any App， Anywhere”，即通过对应用的封装(Packaging)、分发(Distribution)、部署(Deployment)、运行(Runtime)生命周期进行管理，达到应用组件“一次封装、到处运行”的目的。
+为什么使用docker
+Docker容器化的好处
+通过容器来打包应用、解耦应用和运行平台。
+
+Docker在开发和运维中的优势
+(1) 更快速的交付和部署
+(2) 更高效的资源利用
+​    运行docker容器不需要额外的虚拟化管理程序的支持，docker是内核级的虚拟化，可以实现更高的性能，    同时对资源的额外需求较低
+(3) 更轻松的迁移和扩展
+(4) 更简单的更新管理
+​    使用dockerfile，只需要小小的配置修改，就可 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">tsung</div><div class="author-info__description">生命也许会孤独一阵子，但不会孤独一辈子</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives"><div class="headline">文章</div><div class="length_num">17</div></a></div><div class="card-info-data-item is-center">      <a href="/tags"><div class="headline">标签</div><div class="length_num">9</div></a></div><div class="card-info-data-item is-center"><a href="/categories"><div class="headline">分类</div><div class="length_num">6</div></a></div></div><a class="button--animated" id="card-info-btn"><i></i><span>Follow Me</span></a></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">有些事情本身我们无法控制，只好控制自己</div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-recent-item"><div class="aside-recent-post"><a class="aside-post-cover" href="/hello-world/" title="Hello World"><img class="aside-post-bg" data-lazy-src="/img/top_image.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="aside-post-info"><a class="aside-post-title" href="/hello-world/" title="Hello World">Hello World</a><time class="aside-post_meta post-meta-date" datetime="2025-11-14T14:37:21.239Z" title="发表于 2025-11-14 22:37:21">2025-11-14</time></div></div><div class="aside-recent-post"><a class="aside-post-cover" href="/network/VVRP/" title="VRRP-虚拟路由器冗余协议"><img class="aside-post-bg" data-lazy-src="/images/f23c56a41374bd5dd6e7eb1cdcc91588.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="VRRP-虚拟路由器冗余协议"/></a><div class="aside-post-info"><a class="aside-post-title" href="/network/VVRP/" title="VRRP-虚拟路由器冗余协议">VRRP-虚拟路由器冗余协议</a><time class="aside-post_meta post-meta-date" datetime="2021-12-21T16:00:00.000Z" title="发表于 2021-12-22 00:00:00">2021-12-22</time></div></div><div class="aside-recent-post"><a class="aside-post-cover" href="/http/JWT/" title="JSON WEB TOKEN"><img class="aside-post-bg" data-lazy-src="/images/6fd5027da6f7f2f5d7e5db2989b2ceae.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JSON WEB TOKEN"/></a><div class="aside-post-info"><a class="aside-post-title" href="/http/JWT/" title="JSON WEB TOKEN">JSON WEB TOKEN</a><time class="aside-post_meta post-meta-date" datetime="2021-11-14T16:00:00.000Z" title="发表于 2021-11-15 00:00:00">2021-11-15</time></div></div><div class="aside-recent-post"><a class="aside-post-cover" href="/network/Internet%E5%9C%B0%E5%9D%80%E7%BB%93%E6%9E%84/" title="Internet地址结构"><img class="aside-post-bg" data-lazy-src="/images/v2-61ea1ce06d98c376146d9f4afa644abd_1440w.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Internet地址结构"/></a><div class="aside-post-info"><a class="aside-post-title" href="/network/Internet%E5%9C%B0%E5%9D%80%E7%BB%93%E6%9E%84/" title="Internet地址结构">Internet地址结构</a><time class="aside-post_meta post-meta-date" datetime="2020-11-04T16:00:00.000Z" title="发表于 2020-11-05 00:00:00">2020-11-05</time></div></div><div class="aside-recent-post"><a class="aside-post-cover" href="/network/Internet%E6%8E%A7%E5%88%B6%E6%8A%A5%E6%96%87%E5%8D%8F%E8%AE%AE/" title="Internet控制报文协议"><img class="aside-post-bg" data-lazy-src="/images/20200826222744.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Internet控制报文协议"/></a><div class="aside-post-info"><a class="aside-post-title" href="/network/Internet%E6%8E%A7%E5%88%B6%E6%8A%A5%E6%96%87%E5%8D%8F%E8%AE%AE/" title="Internet控制报文协议">Internet控制报文协议</a><time class="aside-post_meta post-meta-date" datetime="2020-11-04T16:00:00.000Z" title="发表于 2020-11-05 00:00:00">2020-11-05</time></div></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/HCNP%E8%B7%AF%E7%94%B1%E4%BA%A4%E6%8D%A2/"><span class="card-category-list-name">HCNP路由交换</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/HTTP/"><span class="card-category-list-name">HTTP</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/SQL/"><span class="card-category-list-name">SQL</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/TCP-IP%E8%AF%A6%E8%A7%A3/"><span class="card-category-list-name">TCP-IP详解</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/docker/"><span class="card-category-list-name">docker</span><span class="card-category-list-count">3</span></a></li>
+                       
+            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/HTTP/" style="font-size: 16px; color: #999">HTTP</a> <a href="/tags/TCP-IPv4/" style="font-size: 16px; color: #999">TCP-IPv4</a> <a href="/tags/WEB/" style="font-size: 16px; color: #999">WEB</a> <a href="/tags/docker/" style="font-size: 22px; color: #99a9bf">docker</a> <a href="/tags/http/" style="font-size: 16px; color: #999">http</a> <a href="/tags/sql/" style="font-size: 16px; color: #999">sql</a> <a href="/tags/%E5%AE%B9%E5%99%A8/" style="font-size: 22px; color: #99a9bf">容器</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" style="font-size: 19px; color: #99a1ac">网络基础</a> <a href="/tags/%E8%B7%AF%E7%94%B1%E4%BA%A4%E6%8D%A2/" style="font-size: 16px; color: #999">路由交换</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/12/"><span class="card-archive-list-date">十二月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/11/"><span class="card-archive-list-date">十一月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">十一月 2020</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/09/"><span class="card-archive-list-date">九月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">八月 2020</span><span class="card-archive-list-count">10</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-article-name">文章数目 :</div><div class="webinfo-article-count">17</div></div><div class="webinfo-item"><div class="webinfo-runtime-name">已运行时间 :</div><div class="webinfo-runtime-count" id="webinfo-runtime-count" publish_date="6/7/2020 00:00:00">     </div></div><div class="webinfo-item"><div class="webinfo-site-wordcount-name">本站总字数 :</div><div class="webinfo-site-wordcount">18.3k</div></div></div></div></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By tsung</div><div class="framework-info"><span>框架 </span><a href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/search/local-search.js"></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script><div class="js-pjax"><script>function subtitleType () {
+  if (true) { 
+    var typed = new Typed("#subtitle", {
+      strings: "生命也许会孤独一阵子，但不会孤独一辈子".split(","),
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50
+    })
+  } else {
+    document.getElementById("subtitle").innerHTML = '生'
+  }
+}
+
+if (true) {
+  if (typeof Typed === 'function') subtitleType()
+  else $.getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js', subtitleType)
+} else {
+  subtitleType()
+}</script></div><script defer="defer" id="ribbon_piao" mobile="false" src="/js/third-party/piao.js"></script><script src="/js/third-party/click_heart.js" async="async"></script></div></body></html>
