@@ -6,7 +6,7 @@
   <link href="http://tsung1992.github.io/atom.xml" rel="self"/>
   
   <link href="http://tsung1992.github.io/"/>
-  <updated>2025-11-14T14:37:21.240Z</updated>
+  <updated>2025-07-19T13:45:57.958Z</updated>
   <id>http://tsung1992.github.io/</id>
   
   <author>
@@ -15,26 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://tsung1992.github.io/hello-world/"/>
-    <id>http://tsung1992.github.io/hello-world/</id>
-    <published>2025-11-14T14:37:21.239Z</published>
-    <updated>2025-11-14T14:37:21.240Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
-      
-    
-    
-    
-    
-  </entry>
   
   <entry>
     <title>VRRP-虚拟路由器冗余协议</title>
@@ -90,31 +70,6 @@
   </entry>
   
   <entry>
-    <title>Internet控制报文协议</title>
-    <link href="http://tsung1992.github.io/network/Internet%E6%8E%A7%E5%88%B6%E6%8A%A5%E6%96%87%E5%8D%8F%E8%AE%AE/"/>
-    <id>http://tsung1992.github.io/network/Internet%E6%8E%A7%E5%88%B6%E6%8A%A5%E6%96%87%E5%8D%8F%E8%AE%AE/</id>
-    <published>2020-11-04T16:00:00.000Z</published>
-    <updated>2025-07-19T13:45:58.095Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>问题：</p><blockquote><ol><li>IP协议本身并没有为终端系统提供直接的方法来发现那些发往目的地址失败的IP数据包。</li><li>IP没有提供直接的方式来获取诊断信息</li></ol></blockquote><p>解决：</p><blockquote><p>ICMP：Internet控制报文协议：</p><ol><li>与IP结合使用，以便提供与IP协议层配置和IP数据包处置相关的诊断和控制信息</li><li>ICMP不为IP网络提供可靠性，表明了某些类别的故障和配置信息</li></ol></blockquote><h2 id="ICMP在IPv4和IPv6中的封装"><a href="#ICMP在IPv4和IPv6中的封装" class="headerlink" title="ICMP在IPv4和IPv6中的封装"></a>ICMP在IPv4和IPv6中的封装</h2><h3 id="IPv4："><a href="#IPv4：" class="headerlink" title="IPv4："></a>IPv4：</h3><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200727230008685.png" alt="image-20200727230008685"></p><h3 id="IPv6："><a href="#IPv6：" class="headerlink" title="IPv6："></a>IPv6：</h3><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200727230230929.png" alt="image-20200727230230929"></p><h3 id="ICMP报文格式"><a href="#ICMP报文格式" class="headerlink" title="ICMP报文格式"></a>ICMP报文格式</h3><p><img src= "/img/loading.gif" data-lazy-src="/images/201805301801365.png" alt="201805301801365.png"></p><ul><li>以8位的类型和代码字段开始</li><li>其后的16位校验和字段涵盖了整个报文</li></ul><p>ICMPv4中为类型字段保留了42个不同的值，用于确定特定的报文</p><p>ICMPv6中，将涵盖一个来自IPv6头部的伪头部(pseudo-header)</p><h2 id="ICMP报文"><a href="#ICMP报文" class="headerlink" title="ICMP报文"></a>ICMP报文</h2><p>分类：</p><blockquote><ol><li>差错报文：有关IP数据报传递的ICMP报文</li><li>查询或信息类报文：有关信息采集和配置的ICMP报文</li></ol></blockquote><h3 id="ICMPv4报文"><a href="#ICMPv4报文" class="headerlink" title="ICMPv4报文"></a>ICMPv4报文</h3><table><thead><tr><th>类型</th><th>正式名称</th><th>参考</th><th>E&#x2F;I</th><th>用途&#x2F;注释</th></tr></thead><tbody><tr><td>0(*)</td><td>回显应答</td><td>RFC0792</td><td>I</td><td>回显(ping)应答，返回数据</td></tr><tr><td>3(*)(+)</td><td>目的不可达</td><td>RFC0792</td><td>E</td><td>不可达的主机&#x2F;协议</td></tr><tr><td>4</td><td>源端抑制</td><td>RFC0792</td><td>E</td><td>表示拥塞(弃用)</td></tr><tr><td>5(*)</td><td>重定向</td><td>RFC0792</td><td>E</td><td>表示应该被使用的可选路由</td></tr><tr><td>8(*)</td><td>回显</td><td>RFC0792</td><td>I</td><td>回显(ping)请求（数据可选）</td></tr><tr><td>9</td><td>路由器通告</td><td>RFC1256</td><td>I</td><td>请求路由器通告</td></tr><tr><td>10</td><td>路由器请求</td><td>RFC1256</td><td>I</td><td>请求路由器通告</td></tr><tr><td>11(*)(+)</td><td>超时</td><td>RFC0792</td><td>E</td><td>资源耗尽(例如IPv4 TTL)</td></tr><tr><td>12(*)(+)</td><td>参数问题</td><td>RFC0792</td><td>E</td><td>有问题的数据包或头部</td></tr></tbody></table><h3 id="ICMPv6报文"><a href="#ICMPv6报文" class="headerlink" title="ICMPv6报文"></a>ICMPv6报文</h3><p>ICMPv6负责的不仅是差错和信息类报文，也负责大量IPv6路由器和主机的配置。</p><p>ICMPv6中，差错报文的报文类型从0-127，信息类报文的报文类型从128-255。</p><h3 id="处理ICMP报文"><a href="#处理ICMP报文" class="headerlink" title="处理ICMP报文"></a>处理ICMP报文</h3><p>一般情况下：</p><ol><li>传入的信息类请求将被操作系统自动处理</li><li>差错类报文传递给用户进程或传输层协议</li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;问题：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;IP协议本身并没有为终端系统提供直接的方法来发现那些发往目的地址失败的IP数据包</summary>
-      
-    
-    
-    
-    <category term="TCP-IP详解" scheme="http://tsung1992.github.io/categories/TCP-IP%E8%AF%A6%E8%A7%A3/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Internet地址结构</title>
     <link href="http://tsung1992.github.io/network/Internet%E5%9C%B0%E5%9D%80%E7%BB%93%E6%9E%84/"/>
     <id>http://tsung1992.github.io/network/Internet%E5%9C%B0%E5%9D%80%E7%BB%93%E6%9E%84/</id>
@@ -131,6 +86,31 @@
 &lt;li&gt;唯一标识互联网上的主机或路由器(唯一、通用、网络连接)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;主机标识</summary>
+      
+    
+    
+    
+    <category term="TCP-IP详解" scheme="http://tsung1992.github.io/categories/TCP-IP%E8%AF%A6%E8%A7%A3/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Internet控制报文协议</title>
+    <link href="http://tsung1992.github.io/network/Internet%E6%8E%A7%E5%88%B6%E6%8A%A5%E6%96%87%E5%8D%8F%E8%AE%AE/"/>
+    <id>http://tsung1992.github.io/network/Internet%E6%8E%A7%E5%88%B6%E6%8A%A5%E6%96%87%E5%8D%8F%E8%AE%AE/</id>
+    <published>2020-11-04T16:00:00.000Z</published>
+    <updated>2025-07-19T13:45:58.095Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>问题：</p><blockquote><ol><li>IP协议本身并没有为终端系统提供直接的方法来发现那些发往目的地址失败的IP数据包。</li><li>IP没有提供直接的方式来获取诊断信息</li></ol></blockquote><p>解决：</p><blockquote><p>ICMP：Internet控制报文协议：</p><ol><li>与IP结合使用，以便提供与IP协议层配置和IP数据包处置相关的诊断和控制信息</li><li>ICMP不为IP网络提供可靠性，表明了某些类别的故障和配置信息</li></ol></blockquote><h2 id="ICMP在IPv4和IPv6中的封装"><a href="#ICMP在IPv4和IPv6中的封装" class="headerlink" title="ICMP在IPv4和IPv6中的封装"></a>ICMP在IPv4和IPv6中的封装</h2><h3 id="IPv4："><a href="#IPv4：" class="headerlink" title="IPv4："></a>IPv4：</h3><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200727230008685.png" alt="image-20200727230008685"></p><h3 id="IPv6："><a href="#IPv6：" class="headerlink" title="IPv6："></a>IPv6：</h3><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200727230230929.png" alt="image-20200727230230929"></p><h3 id="ICMP报文格式"><a href="#ICMP报文格式" class="headerlink" title="ICMP报文格式"></a>ICMP报文格式</h3><p><img src= "/img/loading.gif" data-lazy-src="/images/201805301801365.png" alt="201805301801365.png"></p><ul><li>以8位的类型和代码字段开始</li><li>其后的16位校验和字段涵盖了整个报文</li></ul><p>ICMPv4中为类型字段保留了42个不同的值，用于确定特定的报文</p><p>ICMPv6中，将涵盖一个来自IPv6头部的伪头部(pseudo-header)</p><h2 id="ICMP报文"><a href="#ICMP报文" class="headerlink" title="ICMP报文"></a>ICMP报文</h2><p>分类：</p><blockquote><ol><li>差错报文：有关IP数据报传递的ICMP报文</li><li>查询或信息类报文：有关信息采集和配置的ICMP报文</li></ol></blockquote><h3 id="ICMPv4报文"><a href="#ICMPv4报文" class="headerlink" title="ICMPv4报文"></a>ICMPv4报文</h3><table><thead><tr><th>类型</th><th>正式名称</th><th>参考</th><th>E&#x2F;I</th><th>用途&#x2F;注释</th></tr></thead><tbody><tr><td>0(*)</td><td>回显应答</td><td>RFC0792</td><td>I</td><td>回显(ping)应答，返回数据</td></tr><tr><td>3(*)(+)</td><td>目的不可达</td><td>RFC0792</td><td>E</td><td>不可达的主机&#x2F;协议</td></tr><tr><td>4</td><td>源端抑制</td><td>RFC0792</td><td>E</td><td>表示拥塞(弃用)</td></tr><tr><td>5(*)</td><td>重定向</td><td>RFC0792</td><td>E</td><td>表示应该被使用的可选路由</td></tr><tr><td>8(*)</td><td>回显</td><td>RFC0792</td><td>I</td><td>回显(ping)请求（数据可选）</td></tr><tr><td>9</td><td>路由器通告</td><td>RFC1256</td><td>I</td><td>请求路由器通告</td></tr><tr><td>10</td><td>路由器请求</td><td>RFC1256</td><td>I</td><td>请求路由器通告</td></tr><tr><td>11(*)(+)</td><td>超时</td><td>RFC0792</td><td>E</td><td>资源耗尽(例如IPv4 TTL)</td></tr><tr><td>12(*)(+)</td><td>参数问题</td><td>RFC0792</td><td>E</td><td>有问题的数据包或头部</td></tr></tbody></table><h3 id="ICMPv6报文"><a href="#ICMPv6报文" class="headerlink" title="ICMPv6报文"></a>ICMPv6报文</h3><p>ICMPv6负责的不仅是差错和信息类报文，也负责大量IPv6路由器和主机的配置。</p><p>ICMPv6中，差错报文的报文类型从0-127，信息类报文的报文类型从128-255。</p><h3 id="处理ICMP报文"><a href="#处理ICMP报文" class="headerlink" title="处理ICMP报文"></a>处理ICMP报文</h3><p>一般情况下：</p><ol><li>传入的信息类请求将被操作系统自动处理</li><li>差错类报文传递给用户进程或传输层协议</li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;问题：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;IP协议本身并没有为终端系统提供直接的方法来发现那些发往目的地址失败的IP数据包</summary>
       
     
     
