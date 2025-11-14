@@ -90,6 +90,31 @@
   </entry>
   
   <entry>
+    <title>Internet控制报文协议</title>
+    <link href="http://tsung1992.github.io/network/Internet%E6%8E%A7%E5%88%B6%E6%8A%A5%E6%96%87%E5%8D%8F%E8%AE%AE/"/>
+    <id>http://tsung1992.github.io/network/Internet%E6%8E%A7%E5%88%B6%E6%8A%A5%E6%96%87%E5%8D%8F%E8%AE%AE/</id>
+    <published>2020-11-04T16:00:00.000Z</published>
+    <updated>2025-07-19T13:45:58.095Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>问题：</p><blockquote><ol><li>IP协议本身并没有为终端系统提供直接的方法来发现那些发往目的地址失败的IP数据包。</li><li>IP没有提供直接的方式来获取诊断信息</li></ol></blockquote><p>解决：</p><blockquote><p>ICMP：Internet控制报文协议：</p><ol><li>与IP结合使用，以便提供与IP协议层配置和IP数据包处置相关的诊断和控制信息</li><li>ICMP不为IP网络提供可靠性，表明了某些类别的故障和配置信息</li></ol></blockquote><h2 id="ICMP在IPv4和IPv6中的封装"><a href="#ICMP在IPv4和IPv6中的封装" class="headerlink" title="ICMP在IPv4和IPv6中的封装"></a>ICMP在IPv4和IPv6中的封装</h2><h3 id="IPv4："><a href="#IPv4：" class="headerlink" title="IPv4："></a>IPv4：</h3><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200727230008685.png" alt="image-20200727230008685"></p><h3 id="IPv6："><a href="#IPv6：" class="headerlink" title="IPv6："></a>IPv6：</h3><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200727230230929.png" alt="image-20200727230230929"></p><h3 id="ICMP报文格式"><a href="#ICMP报文格式" class="headerlink" title="ICMP报文格式"></a>ICMP报文格式</h3><p><img src= "/img/loading.gif" data-lazy-src="/images/201805301801365.png" alt="201805301801365.png"></p><ul><li>以8位的类型和代码字段开始</li><li>其后的16位校验和字段涵盖了整个报文</li></ul><p>ICMPv4中为类型字段保留了42个不同的值，用于确定特定的报文</p><p>ICMPv6中，将涵盖一个来自IPv6头部的伪头部(pseudo-header)</p><h2 id="ICMP报文"><a href="#ICMP报文" class="headerlink" title="ICMP报文"></a>ICMP报文</h2><p>分类：</p><blockquote><ol><li>差错报文：有关IP数据报传递的ICMP报文</li><li>查询或信息类报文：有关信息采集和配置的ICMP报文</li></ol></blockquote><h3 id="ICMPv4报文"><a href="#ICMPv4报文" class="headerlink" title="ICMPv4报文"></a>ICMPv4报文</h3><table><thead><tr><th>类型</th><th>正式名称</th><th>参考</th><th>E&#x2F;I</th><th>用途&#x2F;注释</th></tr></thead><tbody><tr><td>0(*)</td><td>回显应答</td><td>RFC0792</td><td>I</td><td>回显(ping)应答，返回数据</td></tr><tr><td>3(*)(+)</td><td>目的不可达</td><td>RFC0792</td><td>E</td><td>不可达的主机&#x2F;协议</td></tr><tr><td>4</td><td>源端抑制</td><td>RFC0792</td><td>E</td><td>表示拥塞(弃用)</td></tr><tr><td>5(*)</td><td>重定向</td><td>RFC0792</td><td>E</td><td>表示应该被使用的可选路由</td></tr><tr><td>8(*)</td><td>回显</td><td>RFC0792</td><td>I</td><td>回显(ping)请求（数据可选）</td></tr><tr><td>9</td><td>路由器通告</td><td>RFC1256</td><td>I</td><td>请求路由器通告</td></tr><tr><td>10</td><td>路由器请求</td><td>RFC1256</td><td>I</td><td>请求路由器通告</td></tr><tr><td>11(*)(+)</td><td>超时</td><td>RFC0792</td><td>E</td><td>资源耗尽(例如IPv4 TTL)</td></tr><tr><td>12(*)(+)</td><td>参数问题</td><td>RFC0792</td><td>E</td><td>有问题的数据包或头部</td></tr></tbody></table><h3 id="ICMPv6报文"><a href="#ICMPv6报文" class="headerlink" title="ICMPv6报文"></a>ICMPv6报文</h3><p>ICMPv6负责的不仅是差错和信息类报文，也负责大量IPv6路由器和主机的配置。</p><p>ICMPv6中，差错报文的报文类型从0-127，信息类报文的报文类型从128-255。</p><h3 id="处理ICMP报文"><a href="#处理ICMP报文" class="headerlink" title="处理ICMP报文"></a>处理ICMP报文</h3><p>一般情况下：</p><ol><li>传入的信息类请求将被操作系统自动处理</li><li>差错类报文传递给用户进程或传输层协议</li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;问题：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;IP协议本身并没有为终端系统提供直接的方法来发现那些发往目的地址失败的IP数据包</summary>
+      
+    
+    
+    
+    <category term="TCP-IP详解" scheme="http://tsung1992.github.io/categories/TCP-IP%E8%AF%A6%E8%A7%A3/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Internet地址结构</title>
     <link href="http://tsung1992.github.io/network/Internet%E5%9C%B0%E5%9D%80%E7%BB%93%E6%9E%84/"/>
     <id>http://tsung1992.github.io/network/Internet%E5%9C%B0%E5%9D%80%E7%BB%93%E6%9E%84/</id>
@@ -106,31 +131,6 @@
 &lt;li&gt;唯一标识互联网上的主机或路由器(唯一、通用、网络连接)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;主机标识</summary>
-      
-    
-    
-    
-    <category term="TCP-IP详解" scheme="http://tsung1992.github.io/categories/TCP-IP%E8%AF%A6%E8%A7%A3/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Internet控制报文协议</title>
-    <link href="http://tsung1992.github.io/network/Internet%E6%8E%A7%E5%88%B6%E6%8A%A5%E6%96%87%E5%8D%8F%E8%AE%AE/"/>
-    <id>http://tsung1992.github.io/network/Internet%E6%8E%A7%E5%88%B6%E6%8A%A5%E6%96%87%E5%8D%8F%E8%AE%AE/</id>
-    <published>2020-11-04T16:00:00.000Z</published>
-    <updated>2025-07-19T13:45:58.095Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>问题：</p><blockquote><ol><li>IP协议本身并没有为终端系统提供直接的方法来发现那些发往目的地址失败的IP数据包。</li><li>IP没有提供直接的方式来获取诊断信息</li></ol></blockquote><p>解决：</p><blockquote><p>ICMP：Internet控制报文协议：</p><ol><li>与IP结合使用，以便提供与IP协议层配置和IP数据包处置相关的诊断和控制信息</li><li>ICMP不为IP网络提供可靠性，表明了某些类别的故障和配置信息</li></ol></blockquote><h2 id="ICMP在IPv4和IPv6中的封装"><a href="#ICMP在IPv4和IPv6中的封装" class="headerlink" title="ICMP在IPv4和IPv6中的封装"></a>ICMP在IPv4和IPv6中的封装</h2><h3 id="IPv4："><a href="#IPv4：" class="headerlink" title="IPv4："></a>IPv4：</h3><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200727230008685.png" alt="image-20200727230008685"></p><h3 id="IPv6："><a href="#IPv6：" class="headerlink" title="IPv6："></a>IPv6：</h3><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200727230230929.png" alt="image-20200727230230929"></p><h3 id="ICMP报文格式"><a href="#ICMP报文格式" class="headerlink" title="ICMP报文格式"></a>ICMP报文格式</h3><p><img src= "/img/loading.gif" data-lazy-src="/images/201805301801365.png" alt="201805301801365.png"></p><ul><li>以8位的类型和代码字段开始</li><li>其后的16位校验和字段涵盖了整个报文</li></ul><p>ICMPv4中为类型字段保留了42个不同的值，用于确定特定的报文</p><p>ICMPv6中，将涵盖一个来自IPv6头部的伪头部(pseudo-header)</p><h2 id="ICMP报文"><a href="#ICMP报文" class="headerlink" title="ICMP报文"></a>ICMP报文</h2><p>分类：</p><blockquote><ol><li>差错报文：有关IP数据报传递的ICMP报文</li><li>查询或信息类报文：有关信息采集和配置的ICMP报文</li></ol></blockquote><h3 id="ICMPv4报文"><a href="#ICMPv4报文" class="headerlink" title="ICMPv4报文"></a>ICMPv4报文</h3><table><thead><tr><th>类型</th><th>正式名称</th><th>参考</th><th>E&#x2F;I</th><th>用途&#x2F;注释</th></tr></thead><tbody><tr><td>0(*)</td><td>回显应答</td><td>RFC0792</td><td>I</td><td>回显(ping)应答，返回数据</td></tr><tr><td>3(*)(+)</td><td>目的不可达</td><td>RFC0792</td><td>E</td><td>不可达的主机&#x2F;协议</td></tr><tr><td>4</td><td>源端抑制</td><td>RFC0792</td><td>E</td><td>表示拥塞(弃用)</td></tr><tr><td>5(*)</td><td>重定向</td><td>RFC0792</td><td>E</td><td>表示应该被使用的可选路由</td></tr><tr><td>8(*)</td><td>回显</td><td>RFC0792</td><td>I</td><td>回显(ping)请求（数据可选）</td></tr><tr><td>9</td><td>路由器通告</td><td>RFC1256</td><td>I</td><td>请求路由器通告</td></tr><tr><td>10</td><td>路由器请求</td><td>RFC1256</td><td>I</td><td>请求路由器通告</td></tr><tr><td>11(*)(+)</td><td>超时</td><td>RFC0792</td><td>E</td><td>资源耗尽(例如IPv4 TTL)</td></tr><tr><td>12(*)(+)</td><td>参数问题</td><td>RFC0792</td><td>E</td><td>有问题的数据包或头部</td></tr></tbody></table><h3 id="ICMPv6报文"><a href="#ICMPv6报文" class="headerlink" title="ICMPv6报文"></a>ICMPv6报文</h3><p>ICMPv6负责的不仅是差错和信息类报文，也负责大量IPv6路由器和主机的配置。</p><p>ICMPv6中，差错报文的报文类型从0-127，信息类报文的报文类型从128-255。</p><h3 id="处理ICMP报文"><a href="#处理ICMP报文" class="headerlink" title="处理ICMP报文"></a>处理ICMP报文</h3><p>一般情况下：</p><ol><li>传入的信息类请求将被操作系统自动处理</li><li>差错类报文传递给用户进程或传输层协议</li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;问题：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;IP协议本身并没有为终端系统提供直接的方法来发现那些发往目的地址失败的IP数据包</summary>
       
     
     
@@ -257,6 +257,30 @@
   </entry>
   
   <entry>
+    <title>TCP-IP详解概述</title>
+    <link href="http://tsung1992.github.io/network/%E6%A6%82%E8%BF%B0/"/>
+    <id>http://tsung1992.github.io/network/%E6%A6%82%E8%BF%B0/</id>
+    <published>2020-08-25T16:00:00.000Z</published>
+    <updated>2025-07-19T13:45:57.862Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h2><ul><li><p>ISO标准(ISO组织制定)</p><p>​    开放系统互连(open system interconnection)，将不同系统进行互连所构建的模型</p><p>​    参考模型：不是实际的协议，并不是在实际过程汇总进行实用的模型，而是作为参考、知道的模型</p></li><li><p>目的</p><p>​    使两个不同的系统能够通信，而不需要改变底层的硬件或软件逻辑</p><p>​    不同的系统：一台计算机、一部电话</p></li></ul><p><strong>OSI不是协议，是网络体系结构的概念模型</strong></p><h2 id="层次体系结构"><a href="#层次体系结构" class="headerlink" title="层次体系结构"></a>层次体系结构</h2><p>网络支持层：为通信提供传输的支持</p><p>应用支持层：通常由软件实现的，应用软件，为网络应用提供相应的支持</p><p>传输层：将上下两层结合在一起</p><p><img src= "/img/loading.gif" data-lazy-src="https://pic1.zhimg.com/80/v2-d15cc181093cdfaaafde8d7e712ede45_720w.png" alt="img"></p><h2 id="对等层通信"><a href="#对等层通信" class="headerlink" title="对等层通信"></a>对等层通信</h2><p>层次模型在通信过程中是如何使用的。</p><p>A 和 B 通过中间节点进行通信(网络互连设备)</p><p>两个系统之间如何实现通信，其通信方式称为对等层通信。</p><p>对等层概念可通过层次模型进行对应。</p><p>下层：服务提供者</p><p>上层：服务使用者</p><p>接口：层与层之间存在一个接口，为了实现层与层之间服务的提供与使用的通道</p><p>对等层：不同主机之间的相同层次被称为对等层(Peer)。主机A的应用层和主机B的应用层互为对等层、主机A的会话层和主机B的会话层互为对等层</p><p>对等进程&#x2F;对等实体</p><p>对等层协议：对等实体之间交换数据或通信时必须遵守的规则</p><p>对等层与对等实体：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">每一层可以同时存在多个实体</span></span><br><span class="line">存在通信关系的对等层实体才是对等实体</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">每一层可以同时存在多个协议</span></span><br><span class="line">协议是对等实体间的通信规则</span><br></pre></td></tr></table></figure><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200717233916992.png" alt="image-20200717233916992"></p><h2 id="数据通信-封装"><a href="#数据通信-封装" class="headerlink" title="数据通信-封装"></a>数据通信-封装</h2><p>7层模型，最上一层直接面向用户，最下一层直接面向物理介质。真正的数据传输方向是发送方是由高层送往底层，接收方由底层依次送往高层</p><p>PDU：协议数据单元，对等实体之间通信时所传输的信息内容，每一层封装成的PDU均有自己的名字</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">应用层、表示层和会话层封装成的PDU被统一称为Data(数据)</span><br><span class="line">传输层的被称为数据段(segement)</span><br><span class="line">在网络层的被称为packet(IP数据包，分组)</span><br><span class="line">数据链路层(frame)帧</span><br><span class="line">物理层的被称为bit流</span><br></pre></td></tr></table></figure><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200718101937721.png" alt="image-20200718101937721"></p><p>在OSI参考模型看来，数据通信时，是一层一层处理，逐层封装好，在物理上进行实在的传输：从源主机（SOURCE）的应用层发出来的数据是有一定格式的协议数据单元，称为PDU（protocol data unit）。应用层发给下一层表示层后，在PDU前面加上了本层控制信息，也就是图中的AH，加在头部。加了头部PH的A-PDU，更新为本层的PDU，也就是要发给第五层会话层的内容。即A-PDU+PH&#x3D;P-PDU。上一层向下一层发送PDU，逐层加上本层的头部后成为下一层的PDU。直至发到数据链路层，数据链路层还加一个尾部，也就是DT，起到校验作用，如果数据正确，继续传输，数据错误直接丢掉不继续传输。数据链路层发给物理层后，物理层将PDU转换为二进制编码（比特流），通过硬件转换为信号发送出去。这样源主机七层任务完成。</p><p>图右侧是目的主机的数据接收过程：接收到硬件的二进制信号后，物理层转换为PDU发个数据链路层。数据链路层拆掉头部和尾部后，将赤裸的PDU送给网络层。网络层再拆掉头部，送入下一层，逐层拆掉头部，到了送给应用层时，前面不同层添加的头部完全被拆干净，留下原本发送的最原始PDU，也就是用户数据。</p><p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdn.net/20181004204141181?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d3d19oZWxsb3dvcmxkX2NvbQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200718220002327.png" alt="image-20200718220002327"></p><p>在构造协议数据单元时会在头部增加控制信息，这些控制信息包括：</p><ol><li><p>地址：用来标识发送端和接收端，源主机得知道数据往哪发，目的主机得知道数据是发给谁的</p></li><li><p>差错检测编码：用于差错检测或纠正</p></li></ol><p>3）协议控制：实现协议功能的附加信息(优先级、服务质量及安全控制等)</p><h2 id="层次功能"><a href="#层次功能" class="headerlink" title="层次功能"></a>层次功能</h2><table><thead><tr><th>层次</th><th>功能</th><th>网络协议</th></tr></thead><tbody><tr><td>应用层</td><td>提供应用协议，用户与网络面对面菜刀接口</td><td>HTTP、TFTP、FTP、SMTP</td></tr><tr><td>表示层</td><td>数据的编码、翻译、压缩、解压缩、加密、解密、将数据翻译为相对应的编码格式，然后展现到应用程序中</td><td>telnet、Rlogin、SNMP、Gopher</td></tr><tr><td>会话层</td><td>主要用来管理会话(建立连接、保持连接、断开连接)</td><td>SMTP、DNS</td></tr><tr><td>传输层</td><td>提供端到端的连接方式(可靠的传输方式、不可靠的传输方式、数据包重组)</td><td>TCP、UDP</td></tr><tr><td>网络层</td><td>负责设备的IP地址寻址，寻找网络中目的位置，并在去往目的的多条路径中选择一条最佳的路径</td><td>IP、ICMP、ARP、RARP、AKP、UUCP</td></tr><tr><td>数据链路层</td><td>协商、流量控制、差错控制、物理寻址</td><td>FDDI、Ethernet、Arpanet、PDN、PPP</td></tr><tr><td>物理层</td><td>定义了网络通信接口及介质的标准，以及将上层封装的数据转换为bit的二进制方式进行传输</td><td>IEEE802.1A，IEEE 802.2到IEEE 802.11</td></tr></tbody></table><h2 id="TCP-IP协议族"><a href="#TCP-IP协议族" class="headerlink" title="TCP&#x2F;IP协议族"></a>TCP&#x2F;IP协议族</h2><p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20190105165116628.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxOTIzNjIy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><h2 id="TCP-IP分层"><a href="#TCP-IP分层" class="headerlink" title="TCP&#x2F;IP分层"></a>TCP&#x2F;IP分层</h2><p>TCP&#x2F;IP通常被认为是一个四层协议系统，每一层负责不同的功能。</p><p><strong>链路层</strong>：数据链路层或网络接口层，通常包括操作系统中的设备驱动程序和计算机中对应的网络接口卡。一起处理与电缆(或其他任何传输媒介)的物理接口细节。</p><p><strong>网络层</strong>：处理分组在网络中的活动，如分组的选路。网络层协议包括IP协议(网际协议)、ICMP协议(Internet互联网控制报文协议)，以及IGMP协议(Internet组管理协议)</p><p><strong>运输层</strong>：主要为两台主机上的应用程序提供端到端的通信。</p><p>​TCP(传输控制协议)：为两台主机提供高可靠性的数据通信，它所做的工作包括把应用程序交给它的数据分成合适的小块交给下面的网络层，确定接收到的分组，设置发送最后确认分组的超时时钟等。</p><p>​UDP(用户数据报协议)：为应用层提供一种非常简单的服务，不可靠的数据通信。</p><p><strong>应用层</strong>：负责处理特定的应用程序细节</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">telnet:远程登录</span><br><span class="line">FTP：文件传输协议</span><br><span class="line">SMTP：简单邮件传送协议</span><br><span class="line">SNMP：简单网络管理协议</span><br></pre></td></tr></table></figure><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200716213159430.png" alt="image-20200716213159430"></p><p>TCP和UDP是两种最为著名的运输层协议，二者都使用IP作为网络层协议。</p><p>TCP虽然使用不可靠的IP服务，但却提供一种可靠的运输层服务</p><p>UDP为应用程序发送和接收数据报，一个数据包是指从发送方传输到接收方的一个信息单元。UDP是不可靠的，不能保证数据报能安全无误的达到最终目的</p><p>IP是网络层上的主要协议，同时被TCP和UDP使用</p><p>ICMP是IP协议的附属协议，IP层用它来与其它主机或路由器交换报错报文和其它重要信息。</p><p>IGMP是Internet组管理协议，它用来把一个UDP数据报多播到多个主机。</p><p>ARP(地址解析协议)和RARP(逆地址解析协议)是某些网络接口使用的特殊协议，用来转换IP层和网络接口层使用的地址。</p><h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>当应用程序用TCP传送数据时，数据被送入协议栈中，然后逐个通过每一层知道被当做一串比特流送入网络。</p><p>TCP传给IP的数据单元称作TCP报文段或简称为TCP端</p><p>IP传给网络接口层的数据单元称作IP数据报</p><p>通过以太网传输的比特流称作帧</p><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200716215110195.png" alt="image-20200716215110195"></p><p>以太网数据帧的物理特性是其长度必须在46~1500字节之间</p><h2 id="编址"><a href="#编址" class="headerlink" title="编址"></a>编址</h2><h3 id="物理地址"><a href="#物理地址" class="headerlink" title="物理地址"></a>物理地址</h3><ul><li>用来标识通信的节点(物理网内部)</li><li>节点由所属的LAN或WAN指定</li><li>在局域网或广域网内是唯一的</li><li>也称为链路地址&#x2F;硬件地址</li><li>并不是用于物理层，而是用于数据链路层(物理层主要完成比特流的传送，仅涉及到信号转换，不涉及寻址)</li></ul><h3 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h3><ul><li>标识通信节点的网络连接(逻辑网络内)</li><li>该地址有Internet指定，在Internet内唯一</li><li>32bit，点分十进制进行标识</li></ul><h3 id="端口地址"><a href="#端口地址" class="headerlink" title="端口地址"></a>端口地址</h3><ul><li>标识于通信进程</li><li>由操作系统来指定，在一台计算机内是唯一的</li><li>作用于传输层，用于标识应用层的信息</li></ul><h3 id="TCP-IP中的地址与层次"><a href="#TCP-IP中的地址与层次" class="headerlink" title="TCP&#x2F;IP中的地址与层次"></a>TCP&#x2F;IP中的地址与层次</h3><p><img src= "/img/loading.gif" data-lazy-src="https://images2015.cnblogs.com/blog/757858/201510/757858-20151001155100871-838532433.jpg" alt="img"></p><h2 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h2><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200718112652511.png" alt="image-20200718112652511"></p><p>更新图标</p><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200718103144528.png" alt="image-20200718103144528"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;OSI参考模型&quot;&gt;&lt;a href=&quot;#OSI参考模型&quot; class=&quot;headerlink&quot; title=&quot;OSI参考模型&quot;&gt;&lt;/a&gt;OSI参考模型&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;ISO标准(ISO组织制定)&lt;/p&gt;
+&lt;p&gt;​    开放系统互连(open sy</summary>
+      
+    
+    
+    
+    <category term="TCP-IP详解" scheme="http://tsung1992.github.io/categories/TCP-IP%E8%AF%A6%E8%A7%A3/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>物理层及数据链路层</title>
     <link href="http://tsung1992.github.io/network/%E7%89%A9%E7%90%86%E5%B1%82&amp;%E9%93%BE%E8%B7%AF%E5%B1%82/"/>
     <id>http://tsung1992.github.io/network/%E7%89%A9%E7%90%86%E5%B1%82&amp;%E9%93%BE%E8%B7%AF%E5%B1%82/</id>
@@ -297,30 +321,6 @@
       
     <summary type="html">&lt;h2 id=&quot;转发器-集线器&quot;&gt;&lt;a href=&quot;#转发器-集线器&quot; class=&quot;headerlink&quot; title=&quot;转发器&amp;#x2F;集线器&quot;&gt;&lt;/a&gt;转发器&amp;#x2F;集线器&lt;/h2&gt;&lt;p&gt;仅发生在物理层，完成比特数据在物理层的传输&lt;/p&gt;
 &lt;p&gt;作用：实现物理层的连接</summary>
-      
-    
-    
-    
-    <category term="TCP-IP详解" scheme="http://tsung1992.github.io/categories/TCP-IP%E8%AF%A6%E8%A7%A3/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>TCP-IP详解概述</title>
-    <link href="http://tsung1992.github.io/network/%E6%A6%82%E8%BF%B0/"/>
-    <id>http://tsung1992.github.io/network/%E6%A6%82%E8%BF%B0/</id>
-    <published>2020-08-25T16:00:00.000Z</published>
-    <updated>2025-07-19T13:45:57.862Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h2><ul><li><p>ISO标准(ISO组织制定)</p><p>​    开放系统互连(open system interconnection)，将不同系统进行互连所构建的模型</p><p>​    参考模型：不是实际的协议，并不是在实际过程汇总进行实用的模型，而是作为参考、知道的模型</p></li><li><p>目的</p><p>​    使两个不同的系统能够通信，而不需要改变底层的硬件或软件逻辑</p><p>​    不同的系统：一台计算机、一部电话</p></li></ul><p><strong>OSI不是协议，是网络体系结构的概念模型</strong></p><h2 id="层次体系结构"><a href="#层次体系结构" class="headerlink" title="层次体系结构"></a>层次体系结构</h2><p>网络支持层：为通信提供传输的支持</p><p>应用支持层：通常由软件实现的，应用软件，为网络应用提供相应的支持</p><p>传输层：将上下两层结合在一起</p><p><img src= "/img/loading.gif" data-lazy-src="https://pic1.zhimg.com/80/v2-d15cc181093cdfaaafde8d7e712ede45_720w.png" alt="img"></p><h2 id="对等层通信"><a href="#对等层通信" class="headerlink" title="对等层通信"></a>对等层通信</h2><p>层次模型在通信过程中是如何使用的。</p><p>A 和 B 通过中间节点进行通信(网络互连设备)</p><p>两个系统之间如何实现通信，其通信方式称为对等层通信。</p><p>对等层概念可通过层次模型进行对应。</p><p>下层：服务提供者</p><p>上层：服务使用者</p><p>接口：层与层之间存在一个接口，为了实现层与层之间服务的提供与使用的通道</p><p>对等层：不同主机之间的相同层次被称为对等层(Peer)。主机A的应用层和主机B的应用层互为对等层、主机A的会话层和主机B的会话层互为对等层</p><p>对等进程&#x2F;对等实体</p><p>对等层协议：对等实体之间交换数据或通信时必须遵守的规则</p><p>对等层与对等实体：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">每一层可以同时存在多个实体</span></span><br><span class="line">存在通信关系的对等层实体才是对等实体</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">每一层可以同时存在多个协议</span></span><br><span class="line">协议是对等实体间的通信规则</span><br></pre></td></tr></table></figure><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200717233916992.png" alt="image-20200717233916992"></p><h2 id="数据通信-封装"><a href="#数据通信-封装" class="headerlink" title="数据通信-封装"></a>数据通信-封装</h2><p>7层模型，最上一层直接面向用户，最下一层直接面向物理介质。真正的数据传输方向是发送方是由高层送往底层，接收方由底层依次送往高层</p><p>PDU：协议数据单元，对等实体之间通信时所传输的信息内容，每一层封装成的PDU均有自己的名字</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">应用层、表示层和会话层封装成的PDU被统一称为Data(数据)</span><br><span class="line">传输层的被称为数据段(segement)</span><br><span class="line">在网络层的被称为packet(IP数据包，分组)</span><br><span class="line">数据链路层(frame)帧</span><br><span class="line">物理层的被称为bit流</span><br></pre></td></tr></table></figure><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200718101937721.png" alt="image-20200718101937721"></p><p>在OSI参考模型看来，数据通信时，是一层一层处理，逐层封装好，在物理上进行实在的传输：从源主机（SOURCE）的应用层发出来的数据是有一定格式的协议数据单元，称为PDU（protocol data unit）。应用层发给下一层表示层后，在PDU前面加上了本层控制信息，也就是图中的AH，加在头部。加了头部PH的A-PDU，更新为本层的PDU，也就是要发给第五层会话层的内容。即A-PDU+PH&#x3D;P-PDU。上一层向下一层发送PDU，逐层加上本层的头部后成为下一层的PDU。直至发到数据链路层，数据链路层还加一个尾部，也就是DT，起到校验作用，如果数据正确，继续传输，数据错误直接丢掉不继续传输。数据链路层发给物理层后，物理层将PDU转换为二进制编码（比特流），通过硬件转换为信号发送出去。这样源主机七层任务完成。</p><p>图右侧是目的主机的数据接收过程：接收到硬件的二进制信号后，物理层转换为PDU发个数据链路层。数据链路层拆掉头部和尾部后，将赤裸的PDU送给网络层。网络层再拆掉头部，送入下一层，逐层拆掉头部，到了送给应用层时，前面不同层添加的头部完全被拆干净，留下原本发送的最原始PDU，也就是用户数据。</p><p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdn.net/20181004204141181?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d3d19oZWxsb3dvcmxkX2NvbQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200718220002327.png" alt="image-20200718220002327"></p><p>在构造协议数据单元时会在头部增加控制信息，这些控制信息包括：</p><ol><li><p>地址：用来标识发送端和接收端，源主机得知道数据往哪发，目的主机得知道数据是发给谁的</p></li><li><p>差错检测编码：用于差错检测或纠正</p></li></ol><p>3）协议控制：实现协议功能的附加信息(优先级、服务质量及安全控制等)</p><h2 id="层次功能"><a href="#层次功能" class="headerlink" title="层次功能"></a>层次功能</h2><table><thead><tr><th>层次</th><th>功能</th><th>网络协议</th></tr></thead><tbody><tr><td>应用层</td><td>提供应用协议，用户与网络面对面菜刀接口</td><td>HTTP、TFTP、FTP、SMTP</td></tr><tr><td>表示层</td><td>数据的编码、翻译、压缩、解压缩、加密、解密、将数据翻译为相对应的编码格式，然后展现到应用程序中</td><td>telnet、Rlogin、SNMP、Gopher</td></tr><tr><td>会话层</td><td>主要用来管理会话(建立连接、保持连接、断开连接)</td><td>SMTP、DNS</td></tr><tr><td>传输层</td><td>提供端到端的连接方式(可靠的传输方式、不可靠的传输方式、数据包重组)</td><td>TCP、UDP</td></tr><tr><td>网络层</td><td>负责设备的IP地址寻址，寻找网络中目的位置，并在去往目的的多条路径中选择一条最佳的路径</td><td>IP、ICMP、ARP、RARP、AKP、UUCP</td></tr><tr><td>数据链路层</td><td>协商、流量控制、差错控制、物理寻址</td><td>FDDI、Ethernet、Arpanet、PDN、PPP</td></tr><tr><td>物理层</td><td>定义了网络通信接口及介质的标准，以及将上层封装的数据转换为bit的二进制方式进行传输</td><td>IEEE802.1A，IEEE 802.2到IEEE 802.11</td></tr></tbody></table><h2 id="TCP-IP协议族"><a href="#TCP-IP协议族" class="headerlink" title="TCP&#x2F;IP协议族"></a>TCP&#x2F;IP协议族</h2><p><img src= "/img/loading.gif" data-lazy-src="https://img-blog.csdnimg.cn/20190105165116628.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxOTIzNjIy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><h2 id="TCP-IP分层"><a href="#TCP-IP分层" class="headerlink" title="TCP&#x2F;IP分层"></a>TCP&#x2F;IP分层</h2><p>TCP&#x2F;IP通常被认为是一个四层协议系统，每一层负责不同的功能。</p><p><strong>链路层</strong>：数据链路层或网络接口层，通常包括操作系统中的设备驱动程序和计算机中对应的网络接口卡。一起处理与电缆(或其他任何传输媒介)的物理接口细节。</p><p><strong>网络层</strong>：处理分组在网络中的活动，如分组的选路。网络层协议包括IP协议(网际协议)、ICMP协议(Internet互联网控制报文协议)，以及IGMP协议(Internet组管理协议)</p><p><strong>运输层</strong>：主要为两台主机上的应用程序提供端到端的通信。</p><p>​TCP(传输控制协议)：为两台主机提供高可靠性的数据通信，它所做的工作包括把应用程序交给它的数据分成合适的小块交给下面的网络层，确定接收到的分组，设置发送最后确认分组的超时时钟等。</p><p>​UDP(用户数据报协议)：为应用层提供一种非常简单的服务，不可靠的数据通信。</p><p><strong>应用层</strong>：负责处理特定的应用程序细节</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">telnet:远程登录</span><br><span class="line">FTP：文件传输协议</span><br><span class="line">SMTP：简单邮件传送协议</span><br><span class="line">SNMP：简单网络管理协议</span><br></pre></td></tr></table></figure><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200716213159430.png" alt="image-20200716213159430"></p><p>TCP和UDP是两种最为著名的运输层协议，二者都使用IP作为网络层协议。</p><p>TCP虽然使用不可靠的IP服务，但却提供一种可靠的运输层服务</p><p>UDP为应用程序发送和接收数据报，一个数据包是指从发送方传输到接收方的一个信息单元。UDP是不可靠的，不能保证数据报能安全无误的达到最终目的</p><p>IP是网络层上的主要协议，同时被TCP和UDP使用</p><p>ICMP是IP协议的附属协议，IP层用它来与其它主机或路由器交换报错报文和其它重要信息。</p><p>IGMP是Internet组管理协议，它用来把一个UDP数据报多播到多个主机。</p><p>ARP(地址解析协议)和RARP(逆地址解析协议)是某些网络接口使用的特殊协议，用来转换IP层和网络接口层使用的地址。</p><h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>当应用程序用TCP传送数据时，数据被送入协议栈中，然后逐个通过每一层知道被当做一串比特流送入网络。</p><p>TCP传给IP的数据单元称作TCP报文段或简称为TCP端</p><p>IP传给网络接口层的数据单元称作IP数据报</p><p>通过以太网传输的比特流称作帧</p><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200716215110195.png" alt="image-20200716215110195"></p><p>以太网数据帧的物理特性是其长度必须在46~1500字节之间</p><h2 id="编址"><a href="#编址" class="headerlink" title="编址"></a>编址</h2><h3 id="物理地址"><a href="#物理地址" class="headerlink" title="物理地址"></a>物理地址</h3><ul><li>用来标识通信的节点(物理网内部)</li><li>节点由所属的LAN或WAN指定</li><li>在局域网或广域网内是唯一的</li><li>也称为链路地址&#x2F;硬件地址</li><li>并不是用于物理层，而是用于数据链路层(物理层主要完成比特流的传送，仅涉及到信号转换，不涉及寻址)</li></ul><h3 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h3><ul><li>标识通信节点的网络连接(逻辑网络内)</li><li>该地址有Internet指定，在Internet内唯一</li><li>32bit，点分十进制进行标识</li></ul><h3 id="端口地址"><a href="#端口地址" class="headerlink" title="端口地址"></a>端口地址</h3><ul><li>标识于通信进程</li><li>由操作系统来指定，在一台计算机内是唯一的</li><li>作用于传输层，用于标识应用层的信息</li></ul><h3 id="TCP-IP中的地址与层次"><a href="#TCP-IP中的地址与层次" class="headerlink" title="TCP&#x2F;IP中的地址与层次"></a>TCP&#x2F;IP中的地址与层次</h3><p><img src= "/img/loading.gif" data-lazy-src="https://images2015.cnblogs.com/blog/757858/201510/757858-20151001155100871-838532433.jpg" alt="img"></p><h2 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h2><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200718112652511.png" alt="image-20200718112652511"></p><p>更新图标</p><p><img src= "/img/loading.gif" data-lazy-src="/images/image-20200718103144528.png" alt="image-20200718103144528"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;OSI参考模型&quot;&gt;&lt;a href=&quot;#OSI参考模型&quot; class=&quot;headerlink&quot; title=&quot;OSI参考模型&quot;&gt;&lt;/a&gt;OSI参考模型&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;ISO标准(ISO组织制定)&lt;/p&gt;
-&lt;p&gt;​    开放系统互连(open sy</summary>
       
     
     
